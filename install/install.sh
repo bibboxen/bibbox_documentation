@@ -30,6 +30,10 @@ then
 		exit
 fi
 
+## Ensure system is up-to-date.
+sudo apt-get update
+sudo apt-get upgrade -y
+
 ## Add chrome to the box.
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -41,7 +45,7 @@ wget -q -O - https://deb.nodesource.com/setup_6.x | sudo bash
 sudo apt-get install nodejs -y
 
 ## Install tools.
-sudo apt-get install build-essential libudev-dev -y
+sudo apt-get install build-essential libudev-dev openssh-server fail2ban -y
 
 ## Install usefull packages.
 sudo apt-get install git supervisor redis-server -y
@@ -106,14 +110,14 @@ sudo mkdir -p "${tgtDir}/Epson"
 sudo cp -p ${SELF}/epson/ppd/tm-* ${tgtDir}/Epson/
 sudo chmod -f 644 ${tgtDir}/Epson/*
 
-
+# Restart cups
+sudo service cups restart
 
 
 ## Change to kiosk mode
 sudo apt-get install openbox -y
-sudo apt-get --purge remove unity -y
-sudo apt-get autoremove -y
 
+# Ensure openbox is default window mananger.
 sudo cat << DELIM >> ${DIR}/50-openbox.conf
 [SeatDefaults]
 autologin-user=bibbox
@@ -125,16 +129,7 @@ DELIM
 
 sudo mv ${DIR}/50-openbox.conf /etc/lightdm/lightdm.conf.d/50-openbox.conf
 
-mkdir -p ${SELF}/.config/openbox
-cat << DELIM >> ${DIR}/50-openbox.conf
-[SeatDefaults]
-autologin-user=bibbox
-autologin-user-timeout=0
-user-session=openbox
-allow-guest=false
-greeter-hide-users=true
-DELIM
-
+# Ensure chrome is started with openbox.
 mkdir -p ${DIR}/.config/openbox
 cat << DELIM >> ${DIR}/.config/openbox/autostart
 rm -rf ~/.{config,cache}/google-chrome/
@@ -145,4 +140,12 @@ done) &
 DELIM
 
 ## Clean up
-sudo apt-get remove --purge firefox -y
+sudo apt-get remove --purge firefox libreoffice-core rhythmbox shotwell transmission thunderbird webbrowser-app deja-dup cheese aisleriot gnome-* -y
+sudo apt-get --purge remove unity -y
+sudo apt-get autoremove -y
+
+# Clean home dir.
+rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
+
+## Restart the show
+reboot
