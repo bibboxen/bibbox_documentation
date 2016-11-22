@@ -139,6 +139,9 @@ google-chrome --make-default-browser
 done) &
 DELIM
 
+# Set default config for openbox.
+cp ${SELF}/rc.xml ${DIR}/.config/openbox
+
 ## Clean up
 sudo apt-get remove --purge firefox libreoffice-core rhythmbox shotwell transmission thunderbird webbrowser-app deja-dup cheese aisleriot gnome-* -y
 sudo apt-get --purge remove unity -y
