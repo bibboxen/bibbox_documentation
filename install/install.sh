@@ -9,8 +9,9 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 USER="bibbox";
 
 ## Define the release file.
-URL="https://github.com/bibboxen/bibbox/releases/download/v1.0.0-beta3/"
-FILE="v1.0.0-beta3.tar.gz"
+URL="https://github.com/bibboxen/bibbox/releases/download/v1.0.0-beta4/"
+FILE="v1.0.0-beta4.tar.gz"
+VERSION="v1.0.0-beta4"
 
 ## Define colors.
 BOLD=$(tput bold)
@@ -69,11 +70,12 @@ LABEL="feig_rules_end"
 DELIM
 sudo mv ${DIR}/41-rfid.rules /etc/udev/rules.d/41-rfid.rules
 
-## Add bibbox packages
-mkdir ${DIR}/bibbox/
+## Add bibbox packages (use symlink to match later update process).
+mkdir ${DIR}/${VERSION}/
 wget -q ${URL}${FILE}
-tar -zxf ${FILE} -C ${DIR}/bibbox/
+tar -zxf ${FILE} -C ${DIR}/${VERSION}/
 rm -rf ${URL}${FILE}
+ln -s ${DIR}/${VERSION}/ bibbox
 
 cp ${SELF}/server.key ${DIR}/bibbox/
 cp ${SELF}/server.crt ${DIR}/bibbox/
@@ -136,5 +138,11 @@ DELIM
 mkdir -p ${DIR}/.config/openbox
 cat << DELIM >> ${DIR}/.config/openbox/autostart
 rm -rf ~/.{config,cache}/google-chrome/
-google-chrome --kiosk --no-first-run  'http://localhost:3010'
+google-chrome --make-default-browser
+(while true; do
+	google-chrome --kiosk --no-first-run --disable-translate --enable-offline-auto-reload 'http://localhost:3010'
+done) &
 DELIM
+
+## Clean up
+sudo apt-get remove --purge firefox -y
