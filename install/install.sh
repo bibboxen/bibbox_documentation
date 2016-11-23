@@ -30,6 +30,60 @@ then
 		exit
 fi
 
+## Set the IP (if static).
+NETMASK="255.255.255.240"
+GATEWAY="172.16.55.1"
+CAST="172.16.55.255"
+DNS1="10.150.4.201"
+DNS2="10.150.4.202"
+
+function set_ip {
+ read -p "Enter IP: " IP
+
+  sudo cat << DELIM >> ${DIR}/interfaces
+auto lo
+iface lo inet loopback
+auto $1
+iface $1 inet static
+  address ${IP}
+  netmask ${NETMASK}
+  gateway ${GATEWAY}
+  broadcast ${CAST}
+  dns-nameservers ${DNS1} ${DNS2}
+DELIM
+  sudo mv interfaces /etc/network/interfaces
+
+  sudo service networking restart
+}
+
+while true; do
+    read -p "Do you wish to set static IP (y/n)? " yn
+    case $yn in
+        [Yy]* )
+					echo "Select the interface to configure:"
+					INTERFACES=$(nmcli -t --fields DEVICE dev)
+					INTERFACES+=' Exit'
+					select INTERFACE in ${INTERFACES};
+					do
+						case ${INTERFACE} in
+							'Exit')
+								break 2
+								;;
+							*)
+								set_ip ${INTERFACE}
+								break 2
+								;;
+						esac
+					done
+					break
+					;;
+        [Nn]* )
+					break
+					;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
 ## Ensure system is up-to-date.
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -110,9 +164,31 @@ sudo mkdir -p "${tgtDir}/Epson"
 sudo cp -p ${SELF}/epson/ppd/tm-* ${tgtDir}/Epson/
 sudo chmod -f 644 ${tgtDir}/Epson/*
 
+cat << DELIM >> ${DIR}/printers.conf
+<DefaultPrinter EPSON-TM-m30>
+  UUID urn:uuid:eb0f7db5-d579-3868-5f9c-21674e09f5bd
+  Info EPSON TM-m30
+  Location localhost
+  MakeModel Epson TM BA Thermal (rastertotmt)
+  DeviceURI usb://EPSON/TM-m30
+  State Idle
+  StateTime 1479136865
+  ConfigTime 1479118516
+  Type 36868
+  Accepting Yes
+  Shared no
+  JobSheets none none
+  QuotaPeriod 0
+  PageLimit 0
+  KLimit 0
+  OpPolicy default
+  ErrorPolicy abort-job
+</DefaultPrinter>
+DELIM
+sudo mv ${DIR}/printers.conf /etc/cups/printers.conf
+
 # Restart cups
 sudo service cups restart
-
 
 ## Change to kiosk mode
 sudo apt-get install openbox -y
