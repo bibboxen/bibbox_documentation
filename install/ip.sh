@@ -5,13 +5,11 @@ function set_ip {
  read -p "IP: " IP
  read -p "Netmask (255.255.255.240): " NETMASK
  read -p "Gateway (172.16.55.1): " GATEWAY
- read -p "Boardcase (172.16.55.255): " CAST
  read -p "DNS 1 (10.150.4.201): " DNS1
  read -p "DNS 2 (10.150.4.204): " DNS2
 
  NETMASK=${NETMASK:-"255.255.255.240"}
  GATEWAY=${GATEWAY:-"172.16.55.1"}
- CAST=${CAST:-"172.16.55.255"}
  DNS1=${DNS1:-"10.150.4.201"}
  DNS2=${DNS2:-"10.150.4.202"}
 
@@ -32,7 +30,7 @@ DELIM
 }
 
 echo "Select the interface to configure:"
-INTERFACES=$(nmcli -t --fields DEVICE dev)
+INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
 INTERFACES+=' Exit'
 select INTERFACE in ${INTERFACES};
 do

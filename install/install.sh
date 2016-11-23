@@ -3,10 +3,12 @@
 ## Script dir
 SELF=$(pwd)
 
+## Current user
+USER=$(whoami);
+
 ## Find the dir.
 cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-USER="bibbox";
 
 ## Define the release file.
 URL="https://github.com/bibboxen/bibbox/releases/download/v1.0.0-beta4/"
@@ -21,33 +23,25 @@ GREEN=$(tput setaf 2)
 RESET=$(tput sgr0)
 
 ## Check if install has been executed before.
-if [ -e $DIR/bibbox ]
+if [ -e $DIR/${DIR}/${VERSION}/ ]
 then
-		echo "${BOLD}Directory ${UNDERLINE}${RED}${DIR}/bibbox${RESET}${BOLD} already exists. Please remove it before running this script${RESET}"
+		echo "${BOLD}Directory ${UNDERLINE}${RED}${DIR}/${VERSION}${RESET}${BOLD} already exists. Please remove it before running this script${RESET}"
 		echo
-		echo "rm -fr $DIR/bibbox"
+		echo "rm -fr ${DIR}/${VERSION}"
 		echo
 		exit
 fi
-
-## Disable screensaver during installation.
-export DISPLAY=:0.0
-xset s off
-xset s noblank
-xset -dpms
 
 ## Set the IP (if static).
 function set_ip {
  read -p "Enter IP: " IP
  read -p "Netmask (255.255.255.240): " NETMASK
  read -p "Gateway (172.16.55.1): " GATEWAY
- read -p "Boardcase (172.16.55.255): " CAST
  read -p "DNS 1 (10.150.4.201): " DNS1
  read -p "DNS 2 (10.150.4.204): " DNS2
 
  NETMASK=${NETMASK:-"255.255.255.240"}
  GATEWAY=${GATEWAY:-"172.16.55.1"}
- CAST=${CAST:-"172.16.55.255"}
  DNS1=${DNS1:-"10.150.4.201"}
  DNS2=${DNS2:-"10.150.4.202"}
 
@@ -72,7 +66,7 @@ while true; do
     case $yn in
         [Yy]* )
 					echo "Select the interface to configure:"
-					INTERFACES=$(nmcli -t --fields DEVICE dev)
+					INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
 					INTERFACES+=' Exit'
 					select INTERFACE in ${INTERFACES};
 					do
@@ -95,25 +89,44 @@ while true; do
     esac
 done
 
-## Ensure system is up-to-date.
-sudo apt-get update
-sudo apt-get upgrade -y
+## Disable wify
+echo "${BOLD}${RED}Disable WIFI to ensure installation.${RESET}"
+echo "Select WIFI interface to disable:"
+INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+INTERFACES+=' No-wifi'
+select INTERFACE in ${INTERFACES};
+do
+	case ${INTERFACE} in
+		'No-wifi')
+			echo "${UNDERLINE}${RED}You known best!${RESET}"
+			sleep 5s
+			break
+			;;
+		*)
+			sudo echo "iface ${INTERFACE} inet manual" >> /etc/network/interfaces
+			break
+			;;
+	esac
 
-## Add chrome to the box.
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt-get update
-sudo apt-get install google-chrome-stable -y
+done
+
+## Restart network anwait for it to be stable.
+echo "${GREEN}Resetting network connections...${RESET}"
+sudo service networking restart
+
+## Ensure system is up-to-date.
+sudo apt-get update || exit 1
+sudo apt-get upgrade -y || exit 1
 
 ## Get NodeJS.
 wget -q -O - https://deb.nodesource.com/setup_6.x | sudo bash
-sudo apt-get install nodejs -y
+sudo apt-get install nodejs -y || exit 1
 
 ## Install tools.
-sudo apt-get install build-essential libudev-dev openssh-server fail2ban -y
+sudo apt-get install build-essential libudev-dev openssh-server fail2ban -y || exit 1
 
 ## Install usefull packages.
-sudo apt-get install git supervisor redis-server -y
+sudo apt-get install git supervisor redis-server -y || exit 1
 
 ## Set udev rule for barcode.
 sudo cat << DELIM >> ${DIR}/40-barcode.rules
@@ -168,7 +181,8 @@ sudo systemctl enable supervisor
 sudo systemctl start supervisor
 
 ## Add printer
-sudo dpkg -i ${SELF}/epson/*.deb
+sudo apt-get install cups libcups2  -y || exit 1
+sudo dpkg -i ${SELF}/epson/*.deb || exit 1
 
 tgtDir="/usr/share/ppd"
 sudo mkdir -p "${tgtDir}/Epson"
@@ -201,20 +215,15 @@ sudo mv ${DIR}/printers.conf /etc/cups/printers.conf
 # Restart cups
 sudo service cups restart
 
-## Change to kiosk mode
-sudo apt-get install openbox -y
+## Install x-server and openbox.
+sudo apt-get install openbox xinit xterm -y || exit 1
+sudo apt-get install lxdm -y || exit 1
 
-# Ensure openbox is default window mananger.
-sudo cat << DELIM >> ${DIR}/50-openbox.conf
-[SeatDefaults]
-autologin-user=bibbox
-autologin-user-timeout=0
-user-session=openbox
-allow-guest=false
-greeter-hide-users=true
-DELIM
+# Auto login.
+sudo sh -c "sed -i '/# autologin=dgod/c autologin=${USER}' /etc/lxdm/lxdm.conf"
+sudo sh -c "sed -i '/# session=\/usr\/bin\/startlxde/c session=\/usr\/bin\/openbox-session' /etc/lxdm/lxdm.conf"
 
-sudo mv ${DIR}/50-openbox.conf /etc/lightdm/lightdm.conf.d/50-openbox.conf
+session=/usr/bin/openbox-session
 
 # Ensure chrome is started with openbox.
 mkdir -p ${DIR}/.config/openbox
@@ -238,13 +247,19 @@ DELIM
 # Set default config for openbox.
 cp ${SELF}/rc.xml ${DIR}/.config/openbox
 
+## Add chrome to the box.
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+sudo apt-get update || exit 1
+sudo apt-get install google-chrome-stable -y || exit 1
+
 ## Clean up
-sudo apt-get remove --purge firefox libreoffice-core rhythmbox shotwell transmission thunderbird webbrowser-app deja-dup cheese aisleriot gnome-* -y
-sudo apt-get --purge remove unity -y
-sudo apt-get autoremove -y
+#sudo apt-get remove --purge firefox libreoffice-core rhythmbox shotwell transmission thunderbird webbrowser-app deja-dup cheese aisleriot gnome-* -y
+#sudo apt-get --purge remove unity -y
+sudo apt-get autoremove -y || exit 1
 
 # Clean home dir.
-rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
+#rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
 
 ## Restart the show
 reboot
