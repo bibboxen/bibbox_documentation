@@ -30,15 +30,26 @@ then
 		exit
 fi
 
-## Set the IP (if static).
-NETMASK="255.255.255.240"
-GATEWAY="172.16.55.1"
-CAST="172.16.55.255"
-DNS1="10.150.4.201"
-DNS2="10.150.4.202"
+## Disable screensaver during installation.
+export DISPLAY=:0.0
+xset s off
+xset s noblank
+xset -dpms
 
+## Set the IP (if static).
 function set_ip {
  read -p "Enter IP: " IP
+ read -p "Netmask (255.255.255.240): " NETMASK
+ read -p "Gateway (172.16.55.1): " GATEWAY
+ read -p "Boardcase (172.16.55.255): " CAST
+ read -p "DNS 1 (10.150.4.201): " DNS1
+ read -p "DNS 2 (10.150.4.204): " DNS2
+
+ NETMASK=${NETMASK:-"255.255.255.240"}
+ GATEWAY=${GATEWAY:-"172.16.55.1"}
+ CAST=${CAST:-"172.16.55.255"}
+ DNS1=${DNS1:-"10.150.4.201"}
+ DNS2=${DNS2:-"10.150.4.202"}
 
   sudo cat << DELIM >> ${DIR}/interfaces
 auto lo
@@ -208,7 +219,16 @@ sudo mv ${DIR}/50-openbox.conf /etc/lightdm/lightdm.conf.d/50-openbox.conf
 # Ensure chrome is started with openbox.
 mkdir -p ${DIR}/.config/openbox
 cat << DELIM >> ${DIR}/.config/openbox/autostart
+# Disalbe screensaver and monitor power managener.
+export DISPLAY=:0.0
+xset s off
+xset s noblank
+xset -dpms
+
+# Clear caches form chrome.
 rm -rf ~/.{config,cache}/google-chrome/
+
+# Make chrome default and start sub-shell to restart chrome if closed.
 google-chrome --make-default-browser
 (while true; do
 	google-chrome --kiosk --no-first-run --disable-translate --enable-offline-auto-reload 'http://localhost:3010'
