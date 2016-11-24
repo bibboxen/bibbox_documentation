@@ -11,9 +11,9 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-URL="https://github.com/bibboxen/bibbox/releases/download/v1.0.0-beta4/"
-FILE="v1.0.0-beta4.tar.gz"
-VERSION="v1.0.0-beta4"
+URL="https://github.com/bibboxen/bibbox/releases/download/v1.0.0-beta5/"
+FILE="v1.0.0-beta5.tar.gz"
+VERSION="v1.0.0-beta5"
 
 ## Define colors.
 BOLD=$(tput bold)
@@ -100,7 +100,7 @@ do
 	case ${INTERFACE} in
 		'No-wifi')
 			echo "${UNDERLINE}${RED}You known best!${RESET}"
-			sleep 5s
+			sleep 2s
 			break
 			;;
 		*)
@@ -165,8 +165,8 @@ do
     libminor=${file%.[0-9]*}
     libmajor=${libminor%.[0-9]*}
     libname=${libmajor%.[0-9]*}
-    ln -sf $libfile $libmajor
-    ln -sf $libmajor $libname
+    sudo ln -sf $libfile $libmajor
+    sudo ln -sf $libmajor $libname
 done
 sudo ldconfig ${FEIG_DEST}
 
