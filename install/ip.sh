@@ -6,7 +6,7 @@ function set_ip {
  read -p "Netmask (255.255.255.240): " NETMASK
  read -p "Gateway (172.16.55.1): " GATEWAY
  read -p "DNS 1 (10.150.4.201): " DNS1
- read -p "DNS 2 (10.150.4.204): " DNS2
+ read -p "DNS 2 (10.150.4.202): " DNS2
 
  NETMASK=${NETMASK:-"255.255.255.240"}
  GATEWAY=${GATEWAY:-"172.16.55.1"}
@@ -56,8 +56,12 @@ do
 			break
 			;;
 		*)
-			sudo sh -c 'echo "iface ${INTERFACE} inet manual" >> /etc/network/interfaces'
+			sudo sh -c "echo 'iface ${INTERFACE} inet manual' >> /etc/network/interfaces"
 			break
 			;;
 	esac
 done
+
+## Restart network anwait for it to be stable.
+echo "${GREEN}Resetting network connections...${RESET}"
+sudo service networking restart

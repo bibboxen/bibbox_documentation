@@ -38,7 +38,7 @@ function set_ip {
  read -p "Netmask (255.255.255.240): " NETMASK
  read -p "Gateway (172.16.55.1): " GATEWAY
  read -p "DNS 1 (10.150.4.201): " DNS1
- read -p "DNS 2 (10.150.4.204): " DNS2
+ read -p "DNS 2 (10.150.4.202): " DNS2
 
  NETMASK=${NETMASK:-"255.255.255.240"}
  GATEWAY=${GATEWAY:-"172.16.55.1"}
@@ -124,7 +124,7 @@ wget -q -O - https://deb.nodesource.com/setup_6.x | sudo bash
 sudo apt-get install nodejs -y || exit 1
 
 ## Install tools.
-sudo apt-get install build-essential libudev-dev openssh-server fail2ban -y || exit 1
+sudo apt-get install build-essential libudev-dev openssh-server fail2ban openjdk-8-jdk -y || exit 1
 
 ## Install usefull packages.
 sudo apt-get install git supervisor redis-server -y || exit 1
@@ -152,6 +152,23 @@ LABEL="feig_rules_end"
 
 DELIM
 sudo mv ${DIR}/41-rfid.rules /etc/udev/rules.d/41-rfid.rules
+
+FEIG_DEST="/opt/feig"
+sudo mkdir -p ${FEIG_DEST}
+for file in ${SELF}/feig/lib*.so*
+do
+    sudo cp $file ${FEIG_DEST}
+done
+
+for file in ${FEIG_DEST}/*
+do
+    libminor=${file%.[0-9]*}
+    libmajor=${libminor%.[0-9]*}
+    libname=${libmajor%.[0-9]*}
+    ln -sf $libfile $libmajor
+    ln -sf $libmajor $libname
+done
+sudo ldconfig ${FEIG_DEST}
 
 ## Add bibbox packages (use symlink to match later update process).
 mkdir ${DIR}/${VERSION}/
