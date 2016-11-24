@@ -212,6 +212,10 @@ cat << DELIM >> ${DIR}/printers.conf
 DELIM
 sudo mv ${DIR}/printers.conf /etc/cups/printers.conf
 
+# Lock down queue to max one job.
+sudo sh -c "echo 'MaxJobTime 30' >> /etc/cups/cupsd.conf"
+sudo sh -c "echo 'MaxJobs 1' >> /etc/cups/cupsd.conf"
+
 # Restart cups
 sudo service cups restart
 
