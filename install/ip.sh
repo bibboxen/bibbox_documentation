@@ -21,12 +21,9 @@ iface $1 inet static
   address ${IP}
   netmask ${NETMASK}
   gateway ${GATEWAY}
-  broadcast ${CAST}
   dns-nameservers ${DNS1} ${DNS2}
 DELIM
   sudo mv interfaces.conf /etc/network/interfaces
-
-  exit;
 }
 
 echo "Select the interface to configure:"
@@ -41,6 +38,26 @@ do
 			;;
 		*)
 			set_ip ${INTERFACE}
+			break;
+			;;
+	esac
+done
+
+echo "${BOLD}${RED}Disable WIFI to lock down.${RESET}"
+echo "Select WIFI interface to disable:"
+INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+INTERFACES+=' No-wifi'
+select INTERFACE in ${INTERFACES};
+do
+	case ${INTERFACE} in
+		'No-wifi')
+			echo "${UNDERLINE}${RED}You known best!${RESET}"
+			sleep 5s
+			break
+			;;
+		*)
+			sudo sh -c 'echo "iface ${INTERFACE} inet manual" >> /etc/network/interfaces'
+			break
 			;;
 	esac
 done

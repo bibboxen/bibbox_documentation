@@ -46,19 +46,20 @@ function set_ip {
  DNS2=${DNS2:-"10.150.4.202"}
 
   sudo cat << DELIM >> ${DIR}/interfaces
+source /etc/network/interfaces.d/*
+
 auto lo
 iface lo inet loopback
+
 auto $1
 iface $1 inet static
   address ${IP}
   netmask ${NETMASK}
   gateway ${GATEWAY}
-  broadcast ${CAST}
   dns-nameservers ${DNS1} ${DNS2}
 DELIM
   sudo mv interfaces /etc/network/interfaces
 
-  sudo service networking restart
 }
 
 while true; do
@@ -103,7 +104,7 @@ do
 			break
 			;;
 		*)
-			sudo echo "iface ${INTERFACE} inet manual" >> /etc/network/interfaces
+			sudo sh -c "echo 'iface ${INTERFACE} inet manual' >> /etc/network/interfaces"
 			break
 			;;
 	esac
@@ -253,17 +254,13 @@ cp ${SELF}/rc.xml ${DIR}/.config/openbox
 
 ## Add chrome to the box.
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list"
 sudo apt-get update || exit 1
 sudo apt-get install google-chrome-stable -y || exit 1
 
 ## Clean up
-#sudo apt-get remove --purge firefox libreoffice-core rhythmbox shotwell transmission thunderbird webbrowser-app deja-dup cheese aisleriot gnome-* -y
-#sudo apt-get --purge remove unity -y
+rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
 sudo apt-get autoremove -y || exit 1
-
-# Clean home dir.
-#rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
 
 ## Restart the show
 reboot
