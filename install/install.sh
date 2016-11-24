@@ -66,6 +66,8 @@ while true; do
     read -p "Do you wish to set static IP (y/n)? " yn
     case $yn in
         [Yy]* )
+					echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
+					echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}w${RESET}."
 					echo "Select the interface to configure:"
 					INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
 					INTERFACES+=' Exit'
@@ -256,8 +258,8 @@ xset s off
 xset s noblank
 xset -dpms
 
-# Clear caches form chrome.
-rm -rf ~/.{config,cache}/google-chrome/
+# Clear caches and other chrome stuff.
+find ~/ -name *chrome* -exec rm -rf {} \;
 
 # Make chrome default and start sub-shell to restart chrome if closed.
 google-chrome --make-default-browser

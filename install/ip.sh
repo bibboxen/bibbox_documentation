@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+BOLD=$(tput bold)
+UNDERLINE=$(tput sgr 0 1)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+RESET=$(tput sgr0)
+
 ## Set the IP (if static).
 function set_ip {
  read -p "IP: " IP
@@ -26,6 +32,8 @@ DELIM
   sudo mv interfaces.conf /etc/network/interfaces
 }
 
+echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
+echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}w${RESET}."
 echo "Select the interface to configure:"
 INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
 INTERFACES+=' Exit'
