@@ -155,22 +155,24 @@ LABEL="feig_rules_end"
 DELIM
 sudo mv ${DIR}/41-rfid.rules /etc/udev/rules.d/41-rfid.rules
 
-FEIG_DEST="/opt/feig"
-sudo mkdir -p ${FEIG_DEST}
-for file in ${SELF}/feig/lib*.so*
-do
-    sudo cp $file ${FEIG_DEST}
-done
+if [ -d "${SELF}/feig" ]; then
+	FEIG_DEST="/opt/feig"
+	sudo mkdir -p ${FEIG_DEST}
+	for file in ${SELF}/feig/lib*.so*
+	do
+	    sudo cp $file ${FEIG_DEST}
+	done
 
-for file in ${FEIG_DEST}/*
-do
-    libminor=${file%.[0-9]*}
-    libmajor=${libminor%.[0-9]*}
-    libname=${libmajor%.[0-9]*}
-    sudo ln -sf $libfile $libmajor
-    sudo ln -sf $libmajor $libname
-done
-sudo ldconfig ${FEIG_DEST}
+	for file in ${FEIG_DEST}/*
+	do
+	    libminor=${file%.[0-9]*}
+	    libmajor=${libminor%.[0-9]*}
+	    libname=${libmajor%.[0-9]*}
+	    sudo ln -sf $file $libmajor
+	    sudo ln -sf $libmajor $libname
+	done
+	sudo ldconfig ${FEIG_DEST}
+fi
 
 ## Add bibbox packages (use symlink to match later update process).
 mkdir ${DIR}/${VERSION}/
@@ -191,7 +193,7 @@ autorestart=true
 environment=NODE_ENV=production
 stderr_logfile=/var/log/supervisor/bibbox.err.log
 stdout_logfile=/var/log/supervisor/bibbox.out.log
-user=${USER}
+user=root
 DELIM
 
 sudo mv ${DIR}/bibbox.conf /etc/supervisor/conf.d/bibbox.conf
