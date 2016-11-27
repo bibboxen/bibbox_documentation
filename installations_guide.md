@@ -279,55 +279,90 @@ Kopier installations folder med script og drivers ind i hjemme mappen for "_bibb
 -------------------------
 
 #### Step 4
-
+Kør installations script ved at gå ind i mappen install. 
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_04.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 5
+Eksekvere file "_install.sh_" for at påbegynde installations processen af BibBox SC software.
+
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_05.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 6
+Første skridt i installations scripter er om du vil benytte en statisk IP adresse eller forsætte med en dynamisk IP. Vi antager her at vi forsætter med en dynamisk IP (statiske kan sætte senere) og vælger derefter at slå WIFI fra på maskinen (normalt start den med "_wlp_").
+
+__Bemærk__: grund til at man slår WIFI fra at det under nogle installation har automatisk forbundet til åbne netværk og derved forstyret hentningen af filer under installationen (med forventning om login på netværk).
+
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_06.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 7
+Her efter start installation med at hente filer og laver forskellige opsætninger. Dette vil tage en del tid alt efter hastigheden på nettet. Under installation kan der blive spurgt efter "_bibbox_" brugerens adgangskode, hvilket man så bare skal indtast. 
+
+__Bemærk__: hvis skærmen bliver sort/blank under installation er dette en screensaver, som kan fjernes ved at trykke f.eks. pil ned (da denne tast på ingen måde kan forstyre installation bagved).
+
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_07.png" alt="Drawing" style="width: 500px;"/>
+
+Når installationen er gennemført vil maskinen genstart og start op med Google Chrome i kiosk mode i en minimal grafisk desktop. Selve konfiguration af brugergrænsefladen ske via det administrative system (web-grænseflade) på BibBox Admin Serveren, som så kan upload konfigurationen til SC maskinen.
 
 -------------------------
 
 # Static IP
+Efter installation kan man åbne en ny terminal og skifte til en statisk IP med scriptet "_ip.sh_" i "_install_" mappen.
+
 
 #### Step 1
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_08.png" alt="Drawing" style="width: 500px;"/>
+For at få adgang til en terminal skal man trykke "__ctrl+w__" og hurtig klikke på højre mus tast på en lyse grå baggrund før Google Chrome når at genstarter. Man vil så få en menu (som vist på billedet), hvis man ikke klikker andre steder vil denne være der efter Chrome er kommet frem igen.
+
+Vælge "__Terminal emulator__" for at start terminalen.
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_00.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 2
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png" alt="Drawing" style="width: 500px;"/>
+Den opstartet terminal med Google Chrome i baggrunden.
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_08.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 3
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png" alt="Drawing" style="width: 500px;"/>
+Gå ind i "_install_" folderen og køre kommandoen "__./ip.sh__" for at start scriptet til at skift til en statisk IP.
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 4
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png" alt="Drawing" style="width: 500px;"/>
+Vælg det netkort som ønske ændret til statisk IP (normalt på Intel nuc, vil det være "_enp3s0_").
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 5
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_12.png" alt="Drawing" style="width: 500px;"/>
+Angiv netværksadresser der ønske brugt, hvis default vil bruges trykker der bare på "__enter__" uden at angiv noget for det enkelt valg.
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 6
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_13.png" alt="Drawing" style="width: 500px;"/>
+Slå WIFI fra ved at valg det wireless netkort (starter normalt med "_wlp_").
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_12.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
+
+#### Step 7
+Genstart maskine for at sikre at ændringen slår igennem. Dette gøres ved at skrive "__reboot__" og trykke "__enter__".
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_13.png" alt="Drawing" style="width: 500px;"/>
+
+Når maskinen kommer op igen med Chrome er maskine færdig konfigureret og klar til at modtage yderlig konfiguration for den administrative server.
