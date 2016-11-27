@@ -308,7 +308,7 @@ __Bemærk__: hvis skærmen bliver sort/blank under installation er dette en scre
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_07.png" alt="Drawing" style="width: 500px;"/>
 
-Når installationen er gennemført vil maskinen genstart og start op med Google Chrome i kiosk mode i en minimal grafisk desktop. Selve konfiguration af brugergrænsefladen ske via det administrative system (web-grænseflade) på BibBox Admin Serveren, som så kan upload konfigurationen til SC maskinen.
+Når installationen er gennemført vil maskinen genstart og start Google Chrome i kiosk mode i en minimal grafisk desktop. Selve konfiguration af brugergrænsefladen ske via det administrative system (web-grænseflade) på BibBox Admin Serveren, som så kan upload konfigurationen til SC maskinen.
 
 -------------------------
 
@@ -365,4 +365,4 @@ Genstart maskine for at sikre at ændringen slår igennem. Dette gøres ved at s
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_13.png" alt="Drawing" style="width: 500px;"/>
 
-Når maskinen kommer op igen med Chrome er maskine færdig konfigureret og klar til at modtage yderlig konfiguration for den administrative server.
+Når maskinen er startet på med Google Chrome er maskine færdig konfigureret og klar til at modtage yderlig konfiguration for den administrative server.
