@@ -186,7 +186,7 @@ cp ${SELF}/server.crt ${DIR}/bibbox/
 
 ## Supervisor config
 sudo cat << DELIM >> ${DIR}/bibbox.conf
-[program:middleware]
+[program:bibbox]
 command=/usr/bin/node /home/${USER}/bibbox/bootstrap.js
 autostart=true
 autorestart=true
