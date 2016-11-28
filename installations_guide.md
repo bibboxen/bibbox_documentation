@@ -351,35 +351,35 @@ Vælge "__Terminal emulator__" for at start terminalen.
 #### Step 2
 Den opstartede terminal med Google Chrome i baggrunden.
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_08.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_08.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 3
-Gå ind i "_install_" folderen og kør kommandoen "__./ip.sh__" for at starte scriptet til at skifte til en statisk IP.
+Gå ind i "_install_" folderen og kør kommandoen "__./ip.sh__" for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skift til DHCP, ved at svare "__y__" til første spørgsmål. Men her antager vi at man svare "__n__" og "__y__" til næste spørgsmål om at sætte en statisk IP.
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 4
-Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være "_enp3s0_").
+Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være "_enp3s0_". Så billedet herunder passer ikke med en Intel nuc, men en virtual maskine).
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 5
-Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på "__enter__" uden at angiv noget for det enkelte valg.
+Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på "__enter__" uden at angiv noget for det enkelte valg. Herefter skal man angiv "_bibbox_" brugerens adgangskode for at foretage ændringeren.
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 6
 Slå WIFI fra ved at vælge det wireless netkort (starter normalt med "_wlp_").
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_12.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_12.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
