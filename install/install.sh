@@ -247,19 +247,16 @@ sudo service cups restart
 
 ## Install x-server and openbox.
 sudo apt-get install openbox xinit xterm -y || exit 1
-sudo apt-get install lxdm -y || exit 1
+sudo apt-get install lxdm xserver-xorg -y || exit 1
 
 # Auto login.
 sudo sh -c "sed -i '/# autologin=dgod/c autologin=${USER}' /etc/lxdm/lxdm.conf"
 sudo sh -c "sed -i '/# session=\/usr\/bin\/startlxde/c session=\/usr\/bin\/openbox-session' /etc/lxdm/lxdm.conf"
 
-session=/usr/bin/openbox-session
-
 # Ensure chrome is started with openbox.
 mkdir -p ${DIR}/.config/openbox
 cat << DELIM >> ${DIR}/.config/openbox/autostart
 # Disalbe screensaver and monitor power managener.
-export DISPLAY=:0.0
 xset s off
 xset s noblank
 xset -dpms
@@ -270,13 +267,13 @@ find ~/ -name *chrome* -exec rm -rf {} \;
 # Make chrome default and start sub-shell to restart chrome if closed.
 /usr/bin/google-chrome --make-default-browser
 (RUN_CHROME=true;
-while ${RUN_CHROME}; do
-        GCH=$(pgrep chrome -c);
-        if [ -z $DISPLAY ]; then
+while \${RUN_CHROME}; do
+        GCH=\$(pgrep chrome -c);
+        if [ -z \$DISPLAY ]; then
           RUN_CHROME=false;
           exit;
         fi
-        if [ $GCH != 0 ]; then
+        if [ \$GCH != 0 ]; then
           RUN_CHROME=false;
           exit;
         fi

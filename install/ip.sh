@@ -54,7 +54,7 @@ DELIM
 ###
 read -p "Do you wish to set dynamic IP (y/n)? " yn
 case $yn in
-    [Yy]* )
+  [Yy]* )
 		echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
 		echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
 		echo "Select the interface to configure:"
@@ -65,7 +65,6 @@ case $yn in
 			case ${INTERFACE} in
 				'Exit')
 					exit;
-					break
 					;;
 				*)
 					set_dhcp ${INTERFACE}
@@ -73,10 +72,9 @@ case $yn in
 					;;
 			esac
 		done
-    [Nn]* )
-			break
-			;;
-    * ) echo "Please answer yes or no.";;
+		;;
+  [Nn]* )
+		;;
 esac
 
 ###
@@ -84,7 +82,7 @@ esac
 ###
 read -p "Do you wish to set static IP (y/n)? " yn
 case $yn in
-    [Yy]* )
+  [Yy]* )
 		echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
 		echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
 		echo "Select the interface to configure:"
@@ -95,7 +93,6 @@ case $yn in
 			case ${INTERFACE} in
 				'Exit')
 					exit;
-					break
 					;;
 				*)
 					set_ip ${INTERFACE}
@@ -103,10 +100,9 @@ case $yn in
 					;;
 			esac
 		done
-    [Nn]* )
-			break
-			;;
-    * ) echo "Please answer yes or no.";;
+		;;
+  [Nn]* )
+		;;
 esac
 
 
