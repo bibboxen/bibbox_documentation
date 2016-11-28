@@ -31,6 +31,7 @@ then
 		echo "${BOLD}Directory ${UNDERLINE}${RED}${DIR}/${VERSION}${RESET}${BOLD} already exists. Please remove it before running this script${RESET}"
 		echo
 		echo "rm -fr ${DIR}/${VERSION}"
+		echo "rm -rf ~/bibbox"
 		echo
 		exit
 fi
