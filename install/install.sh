@@ -207,7 +207,6 @@ sudo systemctl enable supervisor
 sudo systemctl start supervisor
 
 ## Add printer
-sudo
 sudo apt-get install cups libcups2 -y || exit 1
 sudo dpkg -i ${SELF}/epson/*.deb || exit 1
 
