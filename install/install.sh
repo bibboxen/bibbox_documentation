@@ -203,7 +203,7 @@ sudo systemctl enable supervisor
 sudo systemctl start supervisor
 
 ## Add printer
-sudo apt-get install cups libcups2  -y || exit 1
+sudo apt-get install cups libcups2 wkhtmltopdf -y || exit 1
 sudo dpkg -i ${SELF}/epson/*.deb || exit 1
 
 tgtDir="/usr/share/ppd"
