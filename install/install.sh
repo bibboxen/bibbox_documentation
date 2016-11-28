@@ -207,7 +207,8 @@ sudo systemctl enable supervisor
 sudo systemctl start supervisor
 
 ## Add printer
-sudo apt-get install cups libcups2 wkhtmltopdf -y || exit 1
+sudo
+sudo apt-get install cups libcups2 -y || exit 1
 sudo dpkg -i ${SELF}/epson/*.deb || exit 1
 
 tgtDir="/usr/share/ppd"
@@ -289,6 +290,12 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list"
 sudo apt-get update || exit 1
 sudo apt-get install google-chrome-stable -y || exit 1
+
+## Install wkhtmltopdf
+sudo apt-get install xfonts-75dpi -y || exit 1
+wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+sudo dpkg -i wkhtmltox-0.12.2.1_linux-trusty-amd64.deb || exit 1
+rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
