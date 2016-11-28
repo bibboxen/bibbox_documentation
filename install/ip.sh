@@ -20,8 +20,11 @@ function set_ip {
  DNS2=${DNS2:-"10.150.4.202"}
 
   sudo cat << DELIM >> interfaces.conf
+#The loopback network interface
 auto lo
 iface lo inet loopback
+
+# The primary network interface
 auto $1
 iface $1 inet static
   address ${IP}
@@ -32,25 +35,84 @@ DELIM
   sudo mv interfaces.conf /etc/network/interfaces
 }
 
-echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
-echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}w${RESET}."
-echo "Select the interface to configure:"
-INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
-INTERFACES+=' Exit'
-select INTERFACE in ${INTERFACES};
-do
-	case ${INTERFACE} in
-		'Exit')
-			exit;
+function set_dhcp {
+  sudo cat << DELIM >> interfaces.conf
+#The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto $1
+iface $1 inet dhcp
+DELIM
+
+  sudo mv interfaces.conf /etc/network/interfaces
+}
+
+###
+# DHCP question.
+###
+read -p "Do you wish to set dynamic IP (y/n)? " yn
+case $yn in
+    [Yy]* )
+		echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
+		echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
+		echo "Select the interface to configure:"
+		INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+		INTERFACES+=' Exit'
+		select INTERFACE in ${INTERFACES};
+		do
+			case ${INTERFACE} in
+				'Exit')
+					exit;
+					break
+					;;
+				*)
+					set_dhcp ${INTERFACE}
+					break;
+					;;
+			esac
+		done
+    [Nn]* )
 			break
 			;;
-		*)
-			set_ip ${INTERFACE}
-			break;
-			;;
-	esac
-done
+    * ) echo "Please answer yes or no.";;
+esac
 
+###
+# Static IP question.
+###
+read -p "Do you wish to set static IP (y/n)? " yn
+case $yn in
+    [Yy]* )
+		echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
+		echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
+		echo "Select the interface to configure:"
+		INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+		INTERFACES+=' Exit'
+		select INTERFACE in ${INTERFACES};
+		do
+			case ${INTERFACE} in
+				'Exit')
+					exit;
+					break
+					;;
+				*)
+					set_ip ${INTERFACE}
+					break;
+					;;
+			esac
+		done
+    [Nn]* )
+			break
+			;;
+    * ) echo "Please answer yes or no.";;
+esac
+
+
+###
+# WIFY question.
+###
 echo "${BOLD}${RED}Disable WIFI to lock down.${RESET}"
 echo "Select WIFI interface to disable:"
 INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)

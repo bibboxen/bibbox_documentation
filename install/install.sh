@@ -71,7 +71,7 @@ while true; do
     case $yn in
         [Yy]* )
 					echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
-					echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}w${RESET}."
+					echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
 					echo "Select the interface to configure:"
 					INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
 					INTERFACES+=' Exit'
