@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+## Disable term blank
+setterm -blank 0
+
 ## Script dir
 SELF=$(pwd)
 
@@ -264,9 +267,19 @@ xset -dpms
 find ~/ -name *chrome* -exec rm -rf {} \;
 
 # Make chrome default and start sub-shell to restart chrome if closed.
-google-chrome --make-default-browser
-(while true; do
-	google-chrome --kiosk --no-first-run --disable-translate --enable-offline-auto-reload 'http://localhost:3010'
+/usr/bin/google-chrome --make-default-browser
+(RUN_CHROME=true;
+while ${RUN_CHROME}; do
+        GCH=$(pgrep chrome -c);
+        if [ -z $DISPLAY ]; then
+          RUN_CHROME=false;
+          exit;
+        fi
+        if [ $GCH != 0 ]; then
+          RUN_CHROME=false;
+          exit;
+        fi
+        /usr/bin/google-chrome --kiosk --no-first-run --disable-translate --enable-offline-auto-reload 'http://localhost:3010'
 done) &
 DELIM
 
