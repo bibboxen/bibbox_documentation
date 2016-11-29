@@ -42,8 +42,9 @@ To hurtige tryk på "__tab__" vil komme med foreslag, hvis der er mere end en au
 24. Kør scriptet - __"cd /home/bibbox/install"__ og __"./install.sh"__
 25. Hvis maskinen ikke er på det rigtig netværk vælg __"n"__ til at sætte static IP
 26. Vælg wireless netkort og slå dette fra. Normalt starter det med __"wlp"__
-27. Hvis den spørger efter password skriv _bibbox_-brugens adgangskode. Dette kan ske flere gang under installationen,
+27. Hvis den spørger efter password skriv _bibbox_-brugerens adgangskode. Dette kan ske flere gang under installationen,
  hvis denne tager længere tid end normalt.
+28. Hvis den spørger om andet end specificeret i vejledningen ovenfor skal der svares "no" i alle tilfælde.
 
 
 __Skift til statisk IP__
