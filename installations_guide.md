@@ -15,6 +15,44 @@ skifter område med "__tabulator__" og bekræfter sine valg med "__enter__".
 __Hint__: "__tab__" kan også bruges til at auto-complete kommandoer og stier i filesystemet. 
 To hurtige tryk på "__tab__" vil komme med foreslag, hvis der er mere end en auto-complete mulighed.
 
+## Preinstall (Intel NUC)
+Hvis du ikke køre system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.
+
+#### BIOS opdatering
+Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for dette skrive vil sige [PYBSWCEL.86A - 058](https://downloadcenter.intel.com/download/26445/BIOS-Update-PYBSWCEL-86A-). For mere information omkring opdatering læse [Intel] opdatering guide (http://www.intel.com/content/www/us/en/support/boards-and-kits/000005636.html).
+
+
+#### BIOS/UEFI konfiguration Intel NUC
+Intel NUC har problemer med at boot Linux med deres default konfiguration, hvilket fremstår ved at maskine går i stå under opstart af Linux. For at overkommer det skal man lave følgende ændring.
+
+##### Step 1
+Tryk F2 ved Intel NUC logoet under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios1.png" alt="Drawing" style="width: 500px; align: center"/>
+
+-------------------------
+
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios2.png" alt="Drawing" style="width: 500px; align: center"/>
+
+
+-------------------------
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios3.png" alt="Drawing" style="width: 500px; align: center"/>
+
+-------------------------
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios4.png" alt="Drawing" style="width: 500px; align: center"/>
+
+-------------------------
+
+
+#### Opstart Linux installation med UEFI
+
+1. Tryk F10 ved "_Intel NUC_" logo
+2. Vælg "__UEFI : USB : SanDisk Cruzer.....__"
+
+
 ## Kort gennemgang.
 1. Install Ubuntu Server
 2. Vælg sprog __"English"__
