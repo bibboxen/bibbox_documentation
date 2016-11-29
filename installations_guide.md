@@ -19,14 +19,14 @@ To hurtige tryk på "__tab__" vil komme med foreslag, hvis der er mere end en au
 Hvis du ikke køre system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.
 
 ### BIOS opdatering
-Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for dette skrive vil sige [PYBSWCEL.86A - 058](https://downloadcenter.intel.com/download/26445/BIOS-Update-PYBSWCEL-86A-). For mere information omkring opdatering læse [Intel] opdatering guide (http://www.intel.com/content/www/us/en/support/boards-and-kits/000005636.html).
+Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for dette skriv vil sige [PYBSWCEL.86A - 058](https://downloadcenter.intel.com/download/26445/BIOS-Update-PYBSWCEL-86A-). For mere information omkring opdatering læse [Intel's opdatering guide] (http://www.intel.com/content/www/us/en/support/boards-and-kits/000005636.html).
 
 
 ### BIOS/UEFI konfiguration Intel NUC
-Intel NUC har problemer med at boot Linux med deres default konfiguration, hvilket fremstår ved at maskine går i stå under opstart af Linux. For at overkommer det skal man lave følgende ændring.
+Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at overkommer det skal man lave følgende ændring i selve BIOS konfigurationen.
 
 #### Step 1 (Home screen)
-Tryk F2 ved Intel NUC logoet under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge "__Advanced__" (fremhævet med rød cirkel) under "_Boot Order_".
+Tryk F2 ved _"Intel NUC"_ logo'et under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge "__Advanced__" (fremhævet med rød cirkel) under "_Boot Order_".
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios1.png" alt="Drawing" style="width: 500px; align: center"/>
 
@@ -56,7 +56,7 @@ Tryk på "__exit__" ikonet og svar "__Yes__" til at gemme ændringeren.
 
 ### Boot Linux installation med UEFI
 
-1. Tryk F10 ved "_Intel NUC_" logo
+1. Tryk F10 ved "_Intel NUC_" logo'et
 2. Vælg "__UEFI : USB : SanDisk Cruzer.....__"
 
 
