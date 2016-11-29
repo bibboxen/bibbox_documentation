@@ -215,28 +215,8 @@ sudo mkdir -p "${tgtDir}/Epson"
 sudo cp -p ${SELF}/epson/ppd/tm-* ${tgtDir}/Epson/
 sudo chmod -f 644 ${tgtDir}/Epson/*
 
-cat << DELIM >> ${DIR}/printers.conf
-<DefaultPrinter EPSON-TM-m30>
-  UUID urn:uuid:eb0f7db5-d579-3868-5f9c-21674e09f5bd
-  Info EPSON TM-m30
-  Location localhost
-  MakeModel Epson TM BA Thermal (rastertotmt)
-  DeviceURI usb://EPSON/TM-m30
-  State Idle
-  StateTime 1479136865
-  ConfigTime 1479118516
-  Type 36868
-  Accepting Yes
-  Shared no
-  JobSheets none none
-  QuotaPeriod 0
-  PageLimit 0
-  KLimit 0
-  OpPolicy default
-  ErrorPolicy abort-job
-</DefaultPrinter>
-DELIM
-sudo mv ${DIR}/printers.conf /etc/cups/printers.conf
+sudo lpadmin -p bon -E -v usb://EPSON/TM-m30 -P /usr/share/ppd/Epson/tm-ba-thermal-rastertotmt.ppd
+sudo lpadmin -d bon
 
 # Lock down queue to max one job.
 sudo sh -c "echo 'MaxJobTime 30' >> /etc/cups/cupsd.conf"

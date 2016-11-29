@@ -1,0 +1,461 @@
+*PPD-Adobe: "4.3"
+*% Copyright (C) 2013 Seiko Epson Corporation. All rights reserved.
+*%
+*% PPD file for TM/BA Series Printer Driver.
+
+*FormatVersion: "4.3"
+*FileVersion: "2.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "EPTMBATH.PPD"
+*Manufacturer: "Epson"
+*Product: "(ThermalPrinter)"
+*ModelName:"Epson TM BA Thermal"
+*ShortNickName:"Epson TM BA Thermal"
+*NickName: "Epson TM BA Thermal (rastertotmt)"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*VariablePaperSize: True
+*TTRasterizer: Type42
+*cupsVersion: 1.2
+*cupsManualCopies: True
+*cupsModelNumber: 100
+*cupsFilter: "application/vnd.cups-raster 0 rastertotmt"
+*cupsLanguages: "en zh_CN"
+
+
+*% Localized strings
+
+*zh_CN.Translation General/基本设定: ""
+
+*zh_CN.Translation PageSize/纸张尺寸: ""
+*zh_CN.PageSize RP82.5x297/卷纸82.5 x 297 mm: ""
+*zh_CN.PageSize RP80x297/卷纸80 x 297 mm: ""
+*zh_CN.PageSize RP60x297/卷纸60 x 297 mm: ""
+*zh_CN.PageSize RP58x297/卷纸58 x 297 mm: ""
+*zh_CN.PageSize A4/A4: ""
+*zh_CN.PageSize LT/Letter: ""
+
+*zh_CN.Translation PageRegion/纸张尺寸: ""
+*zh_CN.PageRegion RP82.5x297/卷纸82.5 x 297 mm: ""
+*zh_CN.PageRegion RP80x297/卷纸80 x 297 mm: ""
+*zh_CN.PageRegion RP60x297/卷纸60 x 297 mm: ""
+*zh_CN.PageRegion RP58x297/卷纸58 x 297 mm: ""
+*zh_CN.PageRegion A4/A4: ""
+*zh_CN.PageRegion LT/Letter: ""
+
+*zh_CN.Translation TmxPrintingSpeed/打印速度: ""
+*zh_CN.TmxPrintingSpeed Auto/使用打印机设定: ""
+*zh_CN.TmxPrintingSpeed 1/第一（快）: ""
+*zh_CN.TmxPrintingSpeed 2/第二: ""
+*zh_CN.TmxPrintingSpeed 3/第三: ""
+*zh_CN.TmxPrintingSpeed 4/第四（慢）: ""
+
+*zh_CN.Translation TmxPaperReduction/节约纸张: ""
+*zh_CN.TmxPaperReduction Off/无: ""
+*zh_CN.TmxPaperReduction Top/节约顶部空白: ""
+*zh_CN.TmxPaperReduction Bottom/节约底部空白: ""
+*zh_CN.TmxPaperReduction Both/节约顶部和底部空白: ""
+
+*zh_CN.Translation TmxPaperSource/纸张来源: ""
+*zh_CN.TmxPaperSource DocFeedCut/文件 [进纸、切纸]: ""
+*zh_CN.TmxPaperSource DocFeedNoCut/文件 [进纸、不切纸]: ""
+*zh_CN.TmxPaperSource DocNoFeedCut/文件 [不进纸、切纸]: ""
+*zh_CN.TmxPaperSource DocNoFeedNoCut/文件 [不进纸、不切纸]: ""
+*zh_CN.TmxPaperSource PageFeedCut/页面 [进纸、切纸]: ""
+*zh_CN.TmxPaperSource PageFeedNoCut/页面 [进纸、不切纸]: ""
+*zh_CN.TmxPaperSource PageNoFeedCut/页面 [不进纸、切纸]: ""
+
+*zh_CN.Translation PrinterSetting/打印机设定: ""
+
+*zh_CN.Translation TmxPrinterType/打印机类型: ""
+*zh_CN.TmxPrinterType ThermalReceipt/热敏收据: ""
+
+*zh_CN.Translation Resolution/分辨率: ""
+*zh_CN.Resolution 180x180dpi/180 x 180 dpi: ""
+*zh_CN.Resolution 203x203dpi/203 x 203 dpi: ""
+*zh_CN.Resolution 162x162dpi/[90%/180dpi]: ""
+*zh_CN.Resolution 144x144dpi/[80%/180dpi]: ""
+*zh_CN.Resolution 126x126dpi/[70%/180dpi]: ""
+*zh_CN.Resolution 108x108dpi/[60%/180dpi]: ""
+*zh_CN.Resolution 90x90dpi/[50%/180dpi]: ""
+*zh_CN.Resolution 72x72dpi/[40%/180dpi]: ""
+*zh_CN.Resolution 61x61dpi/[33%(A4 to 80mm)/180dpi]: ""
+*zh_CN.Resolution 182x182dpi/[90%/203dpi]: ""
+*zh_CN.Resolution 0162x162dpi/[80%/203dpi]: ""
+*zh_CN.Resolution 142x142dpi/[70%/203dpi]: ""
+*zh_CN.Resolution 121x121dpi/[60%/203dpi]: ""
+*zh_CN.Resolution 102x102dpi/[50%/203dpi]: ""
+*zh_CN.Resolution 81x81dpi/[40%/203dpi]: ""
+*zh_CN.Resolution 68x68dpi/[33%(A4 to 80mm)/203dpi]: ""
+
+*zh_CN.Translation TmxFeedPitch/进纸单位长度: ""
+*zh_CN.TmxFeedPitch 180.0/180 dpi: ""
+*zh_CN.TmxFeedPitch 203.2/203 dpi: ""
+*zh_CN.TmxFeedPitch 360.0/360 dpi: ""
+*zh_CN.TmxFeedPitch 406.4/406 dpi: ""
+
+*zh_CN.Translation TmxMaxBandWidth/最大图像带宽​​: ""
+*% zh_CN.TmxMaxBandWidth 256/256: ""
+*% zh_CN.TmxMaxBandWidth 312/312: ""
+*% zh_CN.TmxMaxBandWidth 352/352: ""
+*zh_CN.TmxMaxBandWidth 360/360: ""
+*zh_CN.TmxMaxBandWidth 384/384: ""
+*zh_CN.TmxMaxBandWidth 416/416: ""
+*zh_CN.TmxMaxBandWidth 420/420: ""
+*% zh_CN.TmxMaxBandWidth 432/432: ""
+*% zh_CN.TmxMaxBandWidth 436/436: ""
+*% zh_CN.TmxMaxBandWidth 462/462: ""
+*% zh_CN.TmxMaxBandWidth 472/472: ""
+*% zh_CN.TmxMaxBandWidth 480/480: ""
+*zh_CN.TmxMaxBandWidth 512/512: ""
+*zh_CN.TmxMaxBandWidth 576/576: ""
+*zh_CN.TmxMaxBandWidth 640/640: ""
+
+*zh_CN.Translation TmxBandLines/图像带​​高度: ""
+*zh_CN.TmxBandLines 256/256: ""
+*% zh_CN.TmxBandLines 1024/1024: ""
+
+*zh_CN.Translation TmxSpeedControl/速度控制: ""
+*zh_CN.TmxSpeedControl 0,0,0,0/不使用: ""
+*zh_CN.TmxSpeedControl -1,-1,-1,-1/BA-T系列: ""
+*zh_CN.TmxSpeedControl 9,7,4,1/最大级别9: ""
+*zh_CN.TmxSpeedControl 11,8,4,1/最大级别11: ""
+*zh_CN.TmxSpeedControl 13,9,5,1/最大级别13: ""
+
+*zh_CN.Translation BuzzerControl/蜂鸣器控制: ""
+
+*zh_CN.Translation TmxBuzzerControl/蜂鸣器: ""
+*zh_CN.TmxBuzzerControl Off/不使用: ""
+*zh_CN.TmxBuzzerControl Before/打印前发声: ""
+*zh_CN.TmxBuzzerControl After/打印后发声: ""
+
+*zh_CN.Translation TmxSoundPattern/发声模式: ""
+*zh_CN.TmxSoundPattern Internal/内置蜂鸣器: ""
+*zh_CN.TmxSoundPattern A/选项蜂鸣器（模式A）: ""
+*zh_CN.TmxSoundPattern B/选项蜂鸣器（模式B）: ""
+*zh_CN.TmxSoundPattern C/选项蜂鸣器（模式C）: ""
+*zh_CN.TmxSoundPattern D/选项蜂鸣器（模式D）: ""
+*zh_CN.TmxSoundPattern E/选项蜂鸣器（模式E）: ""
+
+*zh_CN.Translation TmxBuzzerRepeat/蜂鸣器重复: ""
+*zh_CN.TmxBuzzerRepeat 1/1: ""
+*zh_CN.TmxBuzzerRepeat 2/2: ""
+*zh_CN.TmxBuzzerRepeat 3/3: ""
+*zh_CN.TmxBuzzerRepeat 5/5: ""
+
+*% zh_CN.Translation TmxBuzzerSelect/蜂鸣器选择: ""
+*% zh_CN.TmxBuzzerSelect 0/不使用: ""
+*% zh_CN.TmxBuzzerSelect 1/外部蜂鸣器: ""
+*% zh_CN.TmxBuzzerSelect 2/内置蜂鸣器: ""
+*% zh_CN.TmxBuzzerSelect 3/内置和外部的蜂鸣器: ""
+
+*zh_CN.Translation CashDrawerControl/钱箱控制: ""
+
+*zh_CN.Translation TmxDrawerControl/钱箱: ""
+*zh_CN.TmxDrawerControl None/不打开: ""
+*zh_CN.TmxDrawerControl Drawer#1,Before/打印前打开钱箱#1: ""
+*zh_CN.TmxDrawerControl Drawer#1,After/打印后打开钱箱#1: ""
+*zh_CN.TmxDrawerControl Drawer#2,Before/打印前打开钱箱#2: ""
+*zh_CN.TmxDrawerControl Drawer#2,After/打印后打开钱箱#2: ""
+
+*zh_CN.Translation TmxPulseOnTime/踢脉冲持续时间: ""
+*zh_CN.TmxPulseOnTime 20,10,100/20毫秒: ""
+*zh_CN.TmxPulseOnTime 40,20,100/40毫秒: ""
+*zh_CN.TmxPulseOnTime 60,30,120/60毫秒: ""
+*zh_CN.TmxPulseOnTime 80,40,160/80毫秒: ""
+*zh_CN.TmxPulseOnTime 100,50,200/100毫秒: ""
+*zh_CN.TmxPulseOnTime 120,60,240/120毫秒: ""
+
+
+*% Printer option settings
+
+*OpenGroup: General/General
+
+*% Page size settings.
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize:RP80x297
+*PageSize RP82.5x297/Roll paper 82.5 x 297 mm: "<</PageSize[226.7 841.8]/ImagingBBox null>>setpagedevice"
+*PageSize RP80x297/Roll paper 80 x 297 mm: "<</PageSize[204.0 841.8]/ImagingBBox null>>setpagedevice"
+*PageSize RP60x297/Roll paper 60 x 297 mm: "<</PageSize[153.3 841.8]/ImagingBBox null>>setpagedevice"
+*PageSize RP58x297/Roll paper 58 x 297 mm: "<</PageSize[144.0 841.8]/ImagingBBox null>>setpagedevice"
+*PageSize A4/A4: "<</PageSize[572.5 819.2]/ImagingBBox null>>setpagedevice"
+*PageSize LT/LT: "<</PageSize[589.3 769.3]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion:RP80x297
+*PageRegion RP82.5x297/Roll paper 82.5 x 297 mm: "<</PageSize[226.7 841.8]/ImagingBBox null>>setpagedevice"
+*PageRegion RP80x297/Roll paper 80 x 297 mm: "<</PageSize[204.0 841.8]/ImagingBBox null>>setpagedevice"
+*PageRegion RP60x297/Roll paper 60 x 297 mm: "<</PageSize[153.3 841.8]/ImagingBBox null>>setpagedevice"
+*PageRegion RP58x297/Roll paper 58 x 297 mm: "<</PageSize[144.0 841.8]/ImagingBBox null>>setpagedevice"
+*PageRegion A4/A4: "<</PageSize[572.5 819.2]/ImagingBBox null>>setpagedevice"
+*PageRegion LT/LT: "<</PageSize[589.3 769.3]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: RP80x297
+*ImageableArea RP82.5x297/Roll paper 82.5 x 297 mm: "0.0 0.0 226.7 841.8"
+*ImageableArea RP80x297/Roll paper 80 x 297 mm: "0.0 0.0 204.0 841.8"
+*ImageableArea RP60x297/Roll paper 60 x 297 mm: "0.0 0.0 153.3 841.8"
+*ImageableArea RP58x297/Roll paper 58 x 297 mm: "0.0 0.0 144.0 841.8"
+*ImageableArea A4/A4: "0.0 0.0 572.5 819.2"
+*ImageableArea LT/LT: "0.0 0.0 589.3 769.3"
+
+*DefaultPaperDimension: RP80x297
+*PaperDimension RP82.5x297/Roll paper 82.5 x 297 mm: "226.7 841.8"
+*PaperDimension RP80x297/Roll paper 80 x 297 mm: "204.0 841.8"
+*PaperDimension RP60x297/Roll paper 60 x 297 mm: "153.3 841.8"
+*PaperDimension RP58x297/Roll paper 58 x 297 mm: "144.0 841.8"
+*PaperDimension A4/A4: "572.5 819.2"
+*PaperDimension LT/LT: "589.3 769.3"
+
+*% Custom page size settings.
+*MaxMediaWidth: "226.7"
+*MaxMediaHeight: "5669.2"
+*NonUIOrderDependency: 100 AnySetup *CustomPageSize
+*CustomPageSize True: "pop pop pop <</PageSize [ 5 -2 roll ]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width: 1 points 72 226.7
+*ParamCustomPageSize Height: 2 points 72 5669.2
+*ParamCustomPageSize WidthOffset:  3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation:  5 int 0 0
+
+*% Feed direction settings.
+*TmxReverseFeedDirection: False
+
+*% Printing Speed
+*OpenUI *TmxPrintingSpeed/Printing Speed: PickOne
+*OrderDependency: 15 AnySetup *TmxPrintingSpeed
+*DefaultTmxPrintingSpeed: Auto
+*TmxPrintingSpeed Auto/Use the printer settings: ""
+*TmxPrintingSpeed 1/1st (Fast): ""
+*TmxPrintingSpeed 2/2nd: ""
+*TmxPrintingSpeed 3/3rd: ""
+*TmxPrintingSpeed 4/4th (Slow): ""
+*CloseUI: *TmxPrintingSpeed
+
+*% Paper reduction settings.
+*OpenUI *TmxPaperReduction/Paper Reduction: PickOne
+*OrderDependency: 20 AnySetup *TmxPaperReduction
+*DefaultTmxPaperReduction: Bottom
+*TmxPaperReduction Off/None: ""
+*TmxPaperReduction Top/Top margin: ""
+*TmxPaperReduction Bottom/Bottom margin: ""
+*TmxPaperReduction Both/Top & Bottom margins: ""
+*CloseUI: *TmxPaperReduction
+
+*% Paper source settings.
+*OpenUI *TmxPaperSource/Paper Source: PickOne
+*OrderDependency: 10 AnySetup *TmxPaperSource
+*DefaultTmxPaperSource: DocFeedCut
+*TmxPaperSource DocFeedCut/Document [Feed, Cut]: ""
+*TmxPaperSource DocFeedNoCut/Document [Feed, NoCut]: ""
+*TmxPaperSource DocNoFeedCut/Document [NoFeed, Cut]: ""
+*TmxPaperSource DocNoFeedNoCut/Document [NoFeed, NoCut]: ""
+*TmxPaperSource PageFeedCut/Page [Feed, Cut]: ""
+*TmxPaperSource PageFeedNoCut/Page [Feed, NoCut]: ""
+*TmxPaperSource PageNoFeedCut/Page [NoFeed, Cut]: ""
+*CloseUI: *TmxPaperSource
+
+*CloseGroup: General
+
+
+*OpenGroup: PrinterSetting/Printer Setting
+
+*% Printer type
+*OpenUI *TmxPrinterType/Printer Type: PickOne
+*OrderDependency: 1 AnySetup *TmxPrinterType
+*DefaultTmxPrinterType: ThermalReceipt
+*TmxPrinterType ThermalReceipt/Thermal receipt: ""
+*% TmxPrinterType ThermalReceiptv0/Thermal receipt v0: ""
+*% TmxPrinterType ThermalReceiptA/Thermal receipt A: ""
+*% TmxPrinterType ThermalLabel/Thermal label: ""
+*% TmxPrinterType ThermalLabelA/Thermal label A: ""
+*% TmxPrinterType ThermalMobile/Thermal mobile: ""
+*% TmxPrinterType InkjetReceipt/Inkjet receipt: ""
+*% TmxPrinterType InkjetReceiptv0/Inkjet receipt v0: ""
+*CloseUI: *TmxPrinterType
+
+*% Resolution settings.
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 5 AnySetup *Resolution
+*DefaultResolution: 180x180dpi
+*Resolution 180x180dpi/180 x 180 dpi: "<</HWResolution[180 180]/cupsRowCount 24>>setpagedevice"
+*Resolution 203x203dpi/203 x 203 dpi: "<</HWResolution[203 203]/cupsRowCount 24>>setpagedevice"
+*Resolution 162x162dpi_180/[90%/180dpi]: "<</HWResolution[162 162]/cupsRowCount 24>>setpagedevice"
+*Resolution 144x144dpi_180/[80%/180dpi]: "<</HWResolution[144 144]/cupsRowCount 24>>setpagedevice"
+*Resolution 126x126dpi_180/[70%/180dpi]: "<</HWResolution[126 126]/cupsRowCount 24>>setpagedevice"
+*Resolution 108x108dpi_180/[60%/180dpi]: "<</HWResolution[108 108]/cupsRowCount 24>>setpagedevice"
+*Resolution 90x90dpi_180/[50%/180dpi]: "<</HWResolution[90 90]/cupsRowCount 24>>setpagedevice"
+*Resolution 72x72dpi_180/[40%/180dpi]: "<</HWResolution[72 72]/cupsRowCount 24>>setpagedevice"
+*Resolution 61x61dpi_180/[33%(A4 to 80mm)/180dpi]: "<</HWResolution[61 61]/cupsRowCount 24>>setpagedevice"
+*Resolution 182x182dpi_203/[90%/203dpi]: "<</HWResolution[182 182]/cupsRowCount 24>>setpagedevice"
+*Resolution 162x162dpi_203/[80%/203dpi]: "<</HWResolution[162 162]/cupsRowCount 24>>setpagedevice"
+*Resolution 142x142dpi_203/[70%/203dpi]: "<</HWResolution[142 142]/cupsRowCount 24>>setpagedevice"
+*Resolution 121x121dpi_203/[60%/203dpi]: "<</HWResolution[121 121]/cupsRowCount 24>>setpagedevice"
+*Resolution 102x102dpi_203/[50%/203dpi]: "<</HWResolution[102 102]/cupsRowCount 24>>setpagedevice"
+*Resolution 81x81dpi_203/[40%/203dpi]: "<</HWResolution[81 81]/cupsRowCount 24>>setpagedevice"
+*Resolution 68x68dpi_203/[33%(A4 to 80mm)/203dpi]: "<</HWResolution[68 68]/cupsRowCount 24>>setpagedevice"
+*CloseUI: *Resolution
+
+*% Pitch of feed settings.
+*OpenUI *TmxFeedPitch/Pitch of Feed: PickOne
+*OrderDependency: 7 AnySetup *TmxFeedPitch
+*DefaultTmxFeedPitch: 360.0
+*TmxFeedPitch 180.0/180 dpi: ""
+*TmxFeedPitch 203.2/203 dpi: ""
+*TmxFeedPitch 360.0/360 dpi: ""
+*TmxFeedPitch 406.4/406 dpi: ""
+*CloseUI: *TmxFeedPitch
+
+*% Used command set version.
+*% C1:ESC *, C2:GS 8 L (fn=113), R1:GS v 0, R2:GS 8 L (fn=112), R2-:GS ( L (fn=112)
+*TmxCommandSetVersion ThermalReceipt: "R2"
+*% TmxCommandSetVersion ThermalReceiptv0: "R1"
+*% TmxCommandSetVersion ThermalReceiptA: "C1"
+*% TmxCommandSetVersion ThermalLabel: "R2"
+*% TmxCommandSetVersion ThermalLabelA: "C1"
+*% TmxCommandSetVersion ThermalMobile: "R2-"
+*% TmxCommandSetVersion InkjetReceipt: "R2"
+*% TmxCommandSetVersion InkjetReceiptv0: "R1"
+
+*% Maximum band image width (dots)
+*OpenUI *TmxMaxBandWidth/Maximum Band Width: PickOne
+*OrderDependency: 7 AnySetup *TmxMaxBandWidth
+*DefaultTmxMaxBandWidth: 512
+*% TmxMaxBandWidth 256/256: ""
+*% TmxMaxBandWidth 312/312: ""
+*% TmxMaxBandWidth 352/352: ""
+*TmxMaxBandWidth 360/360: ""
+*TmxMaxBandWidth 384/384: ""
+*TmxMaxBandWidth 416/416: ""
+*TmxMaxBandWidth 420/420: ""
+*% TmxMaxBandWidth 432/432: ""
+*% TmxMaxBandWidth 436/436: ""
+*% TmxMaxBandWidth 462/462: ""
+*% TmxMaxBandWidth 472/472: ""
+*% TmxMaxBandWidth 480/480: ""
+*TmxMaxBandWidth 512/512: ""
+*TmxMaxBandWidth 576/576: ""
+*TmxMaxBandWidth 640/640: ""
+*CloseUI: *TmxMaxBandWidth
+
+*% Line number of band.
+*OpenUI *TmxBandLines/Band Lines: PickOne
+*OrderDependency: 7 AnySetup *TmxBandLines
+*DefaultTmxBandLines: 256
+*TmxBandLines 256/256: ""
+*% TmxBandLines 1024/1024: ""
+*CloseUI: *TmxBandLines
+
+*% Print Speed Control variation
+*OpenUI *TmxSpeedControl/Speed Control: PickOne
+*OrderDependency: 10 AnySetup *TmxSpeedControl
+*DefaultTmxSpeedControl: 13,9,5,1
+*TmxSpeedControl 0,0,0,0/None: ""
+*TmxSpeedControl -1,-1,-1,-1/BA-T series: ""
+*TmxSpeedControl 9,7,4,1/Max. level 9: ""
+*TmxSpeedControl 11,8,4,1/Max. level 11: ""
+*TmxSpeedControl 13,9,5,1/Max. level 13: ""
+*CloseUI: *TmxSpeedControl
+
+*CloseGroup: PrinterSetting
+
+
+*OpenGroup: BuzzerControl/Buzzer Control
+
+*% Buzzer settings.
+*OpenUI *TmxBuzzerControl/Buzzer: PickOne
+*OrderDependency: 20 AnySetup *TmxBuzzerControl
+*DefaultTmxBuzzerControl: Off
+*TmxBuzzerControl Off/Not used: ""
+*TmxBuzzerControl Before/Sounds before printing: ""
+*TmxBuzzerControl After/Sounds after printing: ""
+*CloseUI: *TmxBuzzerControl
+
+*% Sound pattern settings.
+*OpenUI *TmxSoundPattern/Sound Pattern: PickOne
+*OrderDependency: 20 AnySetup *TmxSoundPattern
+*DefaultTmxSoundPattern: Internal
+*TmxSoundPattern Internal/Internal buzzer: ""
+*TmxSoundPattern A/Option buzzer (Pattern A): ""
+*TmxSoundPattern B/Option buzzer (Pattern B): ""
+*TmxSoundPattern C/Option buzzer (Pattern C): ""
+*TmxSoundPattern D/Option buzzer (Pattern D): ""
+*TmxSoundPattern E/Option buzzer (Pattern E): ""
+*CloseUI: *TmxSoundPattern
+
+*% Buzzer repeat settings.
+*OpenUI *TmxBuzzerRepeat/Buzzer Repeat: PickOne
+*OrderDependency: 20 AnySetup *TmxBuzzerRepeat
+*DefaultTmxBuzzerRepeat: 1
+*TmxBuzzerRepeat 1/1: ""
+*TmxBuzzerRepeat 2/2: ""
+*TmxBuzzerRepeat 3/3: ""
+*TmxBuzzerRepeat 5/5: ""
+*CloseUI: *TmxBuzzerRepeat
+
+*% Buzzer select command. (Not used for present)
+*% OpenUI *TmxBuzzerSelect/Buzzer Select: PickOne
+*% OrderDependency: 20 AnySetup *TmxBuzzerSelect
+*% DefaultTmxBuzzerSelect: 0
+*% TmxBuzzerSelect 0/None: ""
+*% TmxBuzzerSelect 1/External buzzer: ""
+*% TmxBuzzerSelect 2/Internal buzzer: ""
+*% TmxBuzzerSelect 3/Internal & external buzzer: ""
+*% CloseUI: *TmxBuzzerSelect
+
+*CloseGroup: BuzzerControl
+
+
+*OpenGroup: CashDrawerControl/Cash Drawer Control
+
+*% Drawer settings
+*OpenUI *TmxDrawerControl/Cash Drawer: PickOne
+*OrderDependency: 20 AnySetup *TmxDrawerControl
+*DefaultTmxDrawerControl: None
+*TmxDrawerControl None/Don't open drawers: ""
+*TmxDrawerControl Drawer#1,Before/Open drawer #1 BEFORE printing: ""
+*TmxDrawerControl Drawer#1,After/Open drawer #1 AFTER printing: ""
+*TmxDrawerControl Drawer#2,Before/Open drawer #2 BEFORE printing: ""
+*TmxDrawerControl Drawer#2,After/Open drawer #2 AFTER printing: ""
+*CloseUI: *TmxDrawerControl
+
+*% Pulse width settings
+*OpenUI *TmxPulseOnTime/Pulse On Time: PickOne
+*OrderDependency: 20 AnySetup *TmxPulseOnTime
+*DefaultTmxPulseOnTime: 20,10,100
+*TmxPulseOnTime 20,10,100/20 msec: ""
+*TmxPulseOnTime 40,20,100/40 msec: ""
+*TmxPulseOnTime 60,30,120/60 msec: ""
+*TmxPulseOnTime 80,40,160/80 msec: ""
+*TmxPulseOnTime 100,50,200/100 msec: ""
+*TmxPulseOnTime 120,60,240/120 msec: ""
+*CloseUI: *TmxPulseOnTime
+
+*CloseGroup: CashDrawerControl
+
+
+*% Message defines.
+
+*TmxMessage ParameterError: "Invalid parameter."
+
+
+*% UIConstraints
+
+*% UIConstraints "*Resolution 180x180dpi *TmxFeedPitch 203.2"
+*% UIConstraints "*Resolution 180x180dpi *TmxFeedPitch 406.4"
+*% UIConstraints "*Resolution 203x203dpi *TmxFeedPitch 180"
+*% UIConstraints "*Resolution 203x203dpi *TmxFeedPitch 360"
+
+*% NonUIConstraints
+
+
+*% End

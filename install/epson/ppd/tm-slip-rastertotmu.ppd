@@ -1,0 +1,232 @@
+*PPD-Adobe: "4.3"
+*% Copyright (C) 2013 Seiko Epson Corporation. All rights reserved.
+*%
+*% PPD file for TM/BA Series Printer Driver.
+
+*FormatVersion: "4.3"
+*FileVersion: "2.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "EPTMSLIP.PPD"
+*Manufacturer: "Epson"
+*Product: "(SlipPrinter)"
+*ModelName:"Epson TM Slip"
+*ShortNickName:"Epson TM Slip"
+*NickName: "Epson TM Slip (rastertotmu)"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*VariablePaperSize: True
+*TTRasterizer: Type42
+*cupsVersion: 1.2
+*cupsManualCopies: True
+*cupsModelNumber: 102
+*cupsFilter: "application/vnd.cups-raster 0 rastertotmu"
+
+*OpenGroup: General/General
+
+*%Page size settings.
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize:CS230x297
+*PageSize CS230x297/Cut sheet 230 x 297 mm: "<</PageSize[242.1 769.0]/ImagingBBox null>>setpagedevice"
+*PageSize CS182x257/Cut sheet 182 x 257 mm: "<</PageSize[179.1 709.0]/ImagingBBox null>>setpagedevice"
+*PageSize A4/A4: "<</PageSize[242.1 769.0]/ImagingBBox null>>setpagedevice"
+*PageSize LT/LT: "<</PageSize[242.1 719.0]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion:CS230x297
+*PageRegion CS230x297/Cut sheet 230 x 297 mm: "<</PageSize[242.1 769.0]/ImagingBBox null>>setpagedevice"
+*PageRegion CS182x257/Cut sheet 182 x 257 mm: "<</PageSize[179.1 709.0]/ImagingBBox null>>setpagedevice"
+*PageRegion A4/A4: "<</PageSize[242.1 769.0]/ImagingBBox null>>setpagedevice"
+*PageRegion LT/LT: "<</PageSize[242.1 719.0]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: CS230x297
+*ImageableArea CS230x297/Cut sheet 230 x 297 mm: "0.0 0.0 242.1 769.0"
+*ImageableArea CS182x257/Cut sheet 182 x 257 mm: "0.0 0.0 179.1 709.0"
+*ImageableArea A4/A4: "0.0 0.0 242.1 769.0"
+*ImageableArea LT/LT: "0.0 0.0 242.1 719.0"
+
+*DefaultPaperDimension: CS230x297
+*PaperDimension CS230x297/Cut sheet 230 x 297 mm: "242.1 769.0"
+*PaperDimension CS182x257/Cut sheet 182 x 257 mm: "179.1 709.0"
+*PaperDimension A4/A4: "242.1 769.0"
+*PaperDimension LT/LT: "242.1 719.0"
+
+*%Custom page size settings.
+*MaxMediaWidth: "242.1"
+*MaxMediaHeight: "769.0"
+*NonUIOrderDependency: 100 AnySetup *CustomPageSize
+*CustomPageSize True: "pop pop pop <</PageSize [ 5 -2 roll ]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width: 1 points 162.7 242.1
+*ParamCustomPageSize Height: 2 points 364.5 769.0
+*ParamCustomPageSize WidthOffset:  3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation:  5 int 0 0
+
+*%Feed direction settings.
+*TmxReverseFeedDirection: False
+
+*%Paper reduction settings.
+*OpenUI *TmxPaperReduction/Paper Reduction: PickOne
+*OrderDependency: 20 AnySetup *TmxPaperReduction
+*DefaultTmxPaperReduction: Off
+*TmxPaperReduction Off/None: ""
+*TmxPaperReduction Top/Top margin: ""
+*TmxPaperReduction Bottom/Bottom margin: ""
+*TmxPaperReduction Both/Top & Bottom margins: ""
+*CloseUI: *TmxPaperReduction
+
+*%Paper source settings.
+*OpenUI *TmxPaperSource/Paper Source: PickOne
+*OrderDependency: 10 AnySetup *TmxPaperSource
+*DefaultTmxPaperSource: SheetEject
+*TmxPaperSource SheetEject/Cut sheet [Eject]: ""
+*TmxPaperSource SheetNoEject/Cut sheet [NoEject]: ""
+*CloseUI: *TmxPaperSource
+
+*%Paper eject direction settings.
+*OpenUI *TmxEjectDirection/Eject Direction: PickOne
+*OrderDependency: 11 AnySetup *TmxEjectDirection
+*DefaultTmxEjectDirection: FeedDirection
+*TmxEjectDirection FeedDirection/Feed direction: ""
+*TmxEjectDirection ReverseFeedDirection/Reverse feed direction: ""
+*CloseUI: *TmxEjectDirection
+
+*CloseGroup: General
+
+*OpenGroup: PrinterControl/Printer Setting
+
+*%Printer type
+*OpenUI *TmxPrinterType/Printer Type: PickOne
+*OrderDependency: 1 AnySetup *TmxPrinterType
+*DefaultTmxPrinterType: ImpactSlip
+*TmxPrinterType ImpactSlip/Impact slip: ""
+*% TmxPrinterType ImpactSlipv0/Impact slip v0: ""
+*% TmxPrinterType InkjetSlip/Inkjet slip: ""
+*% TmxPrinterType InkjetSlipv0/Inkjet slip v0: ""
+*CloseUI: *TmxPrinterType
+
+*%Resolution settings.
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 5 AnySetup *Resolution
+*DefaultResolution: 160x144dpi
+*% Resolution 80x60dpi/80 x 60 dpi: "<</HWResolution[80 60]/cupsRowCount 8>>setpagedevice"
+*Resolution 80x72dpi/80 x 72 dpi: "<</HWResolution[80 72]/cupsRowCount 8>>setpagedevice"
+*% Resolution 160x60dpi/160 x 60 dpi: "<</HWResolution[160 60]/cupsRowCount 8>>setpagedevice"
+*% Resolution 160x72dpi/160 x 72 dpi: "<</HWResolution[160 72]/cupsRowCount 8>>setpagedevice"
+*% Resolution 160x120dpi/160 x 120 dpi: "<</HWResolution[160 120]/cupsRowCount 8>>setpagedevice"
+*Resolution 160x144dpi/160 x 144 dpi: "<</HWResolution[160 144]/cupsRowCount 8>>setpagedevice"
+*Resolution 144x130dpi/[90%/160x144dpi]: "<</HWResolution[144 130]/cupsRowCount 8>>setpagedevice"
+*Resolution 128x115dpi/[80%/160x144dpi]: "<</HWResolution[128 115]/cupsRowCount 8>>setpagedevice"
+*Resolution 112x101dpi/[70%/160x144dpi]: "<</HWResolution[112 101]/cupsRowCount 8>>setpagedevice"
+*Resolution 96x86dpi/[60%/160x144dpi]: "<</HWResolution[96 86]/cupsRowCount 8>>setpagedevice"
+*Resolution 82x73dpi/[50%/160x144dpi]: "<</HWResolution[82 73]/cupsRowCount 8>>setpagedevice"
+*Resolution 69x62dpi/[43%(A4 to 85mm)/160x144dpi]: "<</HWResolution[69 62]/cupsRowCount 8>>setpagedevice"
+*CloseUI: *Resolution
+
+*%2pass print settings.
+*% Tmx2PassPrint 80x60dpi: 0
+*Tmx2PassPrint 80x72dpi: 0
+*% Tmx2PassPrint 160x60dpi: 0
+*% Tmx2PassPrint 160x72dpi: 0
+*% Tmx2PassPrint 160x120dpi: 0
+*Tmx2PassPrint 160x144dpi: 1
+*Tmx2PassPrint 144x130dpi: 1
+*Tmx2PassPrint 128x115dpi: 1
+*Tmx2PassPrint 112x101dpi: 1
+*Tmx2PassPrint 96x86dpi: 1
+*Tmx2PassPrint 82x73dpi: 1
+*Tmx2PassPrint 69x62dpi: 1
+
+*%Pitch of feed settings.
+*OpenUI *TmxFeedPitch/Pitch of Feed: PickOne
+*OrderDependency: 7 AnySetup *TmxFeedPitch
+*DefaultTmxFeedPitch: 144.0
+*% TmxFeedPitch 60.0/60 dpi: ""
+*% TmxFeedPitch 72.0/72 dpi: ""
+*% TmxFeedPitch 120.0/120 dpi: ""
+*TmxFeedPitch 144.0/144 dpi: ""
+*CloseUI: *TmxFeedPitch
+
+*%Used command set version.
+*% C1:ESC *, C2:GS 8 L (fn=113), R1:GS v 0, R2:GS 8 L (fn=112), R2-:GS ( L (fn=112)
+*TmxCommandSetVersion ImpactSlip: "C1"
+*% TmxCommandSetVersion ImpactSlipv0: "R1"
+*% TmxCommandSetVersion InkjetSlip: "C2"
+*% TmxCommandSetVersion InkjetSlipv0: "R1"
+
+*% Maximum band image width (dots)
+*OpenUI *TmxMaxBandWidth/Maximum Band Width: PickOne
+*OrderDependency: 7 AnySetup *TmxMaxBandWidth
+*DefaultTmxMaxBandWidth: 540
+*TmxMaxBandWidth 400/400: ""
+*TmxMaxBandWidth 540/540: ""
+*% TmxMaxBandWidth 744/744: ""
+*% TmxMaxBandWidth 800/800: ""
+*% TmxMaxBandWidth 960/960: ""
+*% TmxMaxBandWidth 1430/1430: ""
+*CloseUI: *TmxMaxBandWidth
+
+*%Line number of band.
+*OpenUI *TmxBandLines/Band Lines: PickOne
+*OrderDependency: 7 AnySetup *TmxBandLines
+*DefaultTmxBandLines: 8
+*TmxBandLines 8/8: ""
+*% TmxBandLines 24/24: ""
+*% TmxBandLines 256/256: ""
+*CloseUI: *TmxBandLines
+
+*%Bidirectional printing settings.
+*OpenUI *TmxBidirectionalPrinting/Printing: PickOne
+*OrderDependency: 10 AnySetup *TmxBidirectionalPrinting
+*DefaultTmxBidirectionalPrinting: Bidirectional
+*TmxBidirectionalPrinting Bidirectional/Bidirectional: ""
+*TmxBidirectionalPrinting Unidirectional/Unidirectional: ""
+*CloseUI: *TmxBidirectionalPrinting
+
+*CloseGroup: PrinterControl
+
+*OpenGroup: CashDrawerControl/Cash Drawer Control
+
+*% Drawer settings
+*OpenUI *TmxDrawerControl/Cash Drawer: PickOne
+*OrderDependency: 20 AnySetup *TmxDrawerControl
+*DefaultTmxDrawerControl: None
+*TmxDrawerControl None/Don't open drawers: ""
+*TmxDrawerControl Drawer#1,Before/Open drawer #1 BEFORE printing: ""
+*TmxDrawerControl Drawer#1,After/Open drawer #1 AFTER printing: ""
+*TmxDrawerControl Drawer#2,Before/Open drawer #2 BEFORE printing: ""
+*TmxDrawerControl Drawer#2,After/Open drawer #2 AFTER printing: ""
+*CloseUI: *TmxDrawerControl
+
+*% Pulse width settings
+*OpenUI *TmxPulseOnTime/Pulse On Time: PickOne
+*OrderDependency: 20 AnySetup *TmxPulseOnTime
+*DefaultTmxPulseOnTime: 20,10,100
+*TmxPulseOnTime 20,10,100/20 msec: ""
+*TmxPulseOnTime 40,20,100/40 msec: ""
+*TmxPulseOnTime 60,30,120/60 msec: ""
+*TmxPulseOnTime 80,40,160/80 msec: ""
+*TmxPulseOnTime 100,50,200/100 msec: ""
+*TmxPulseOnTime 120,60,240/120 msec: ""
+*CloseUI: *TmxPulseOnTime
+
+*CloseGroup: CashDrawerControl
+
+*%Message defines.
+*TmxMessage ParameterError: "Invalid parameter."
+
+*% UIConstraints
+
+*% NonUIConstraints
+
+
+*% End
