@@ -25,6 +25,8 @@ Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for d
 ### BIOS/UEFI konfiguration Intel NUC
 Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at komme videre det skal man lave følgende ændring i selve BIOS konfigurationen.
 
+__Note__: Husk at sætte maskine til at start automatisk ved "__Power failure__", hvilet osse gøres i BIOS.
+
 #### Step 1 (Home screen)
 Tryk F2 ved _"Intel NUC"_ logo'et under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge "__Advanced__" (fremhævet med rød cirkel) under "_Boot Order_".
 
@@ -326,9 +328,9 @@ Log ind som brugeren "__bibbox__" på systemet.
 -------------------------
 
 #### Step 2
-Hvis MAC adressen skal benytte til netværks opsætning f.eks. ISE. Så fåes denne ved at køre "__ifconfig__" (se skræmbilledet herunder hvor MAC adresseb har en rød streg under)
+Hvis MAC adressen skal benytte til netværks opsætning f.eks. ISE. Så fåes denne ved at køre "__ifconfig__" (se skræmbilledet herunder hvor MAC adressen har en rød streg under)
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_02.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_001.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
@@ -343,7 +345,7 @@ USB nøglen vil normalt komme frem som "_sdb1_", men kan hvis der er flere USB n
 #### Step 4
 Kopier installationsfolderen med script og drivers ind i hjemmemappen for "_bibbox_"-brugeren.
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_001.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_03.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 

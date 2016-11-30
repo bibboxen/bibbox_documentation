@@ -220,7 +220,7 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 
 <h2 id="toc_1">Preinstall (Intel NUC)</h2>
 
-<p>Hvis du ikke køre system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.</p>
+<p>Hvis du ikke kører system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.</p>
 
 <h3 id="toc_2">BIOS opdatering</h3>
 
@@ -228,7 +228,9 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 
 <h3 id="toc_3">BIOS/UEFI konfiguration Intel NUC</h3>
 
-<p>Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at overkommer det skal man lave følgende ændring i selve BIOS konfigurationen.</p>
+<p>Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at komme videre det skal man lave følgende ændring i selve BIOS konfigurationen.</p>
+
+<p><strong>Note</strong>: Husk at sætte maskine til at start automatisk ved &quot;<strong>Power failure</strong>&quot;, hvilet osse gøres i BIOS.</p>
 
 <h4 id="toc_4">Step 1 (Home screen)</h4>
 
@@ -269,7 +271,7 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 <li>Vælg &quot;<strong>UEFI : USB : SanDisk Cruzer.....</strong>&quot;</li>
 </ol>
 
-<h2 id="toc_9">Kort gennemgang.</h2>
+<h2 id="toc_9">Kort gennemgang</h2>
 
 <ol>
 <li>Install Ubuntu Server</li>
@@ -291,6 +293,7 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 <li>Install Grub i master boot record, hvis det kommer op vælg så disken <strong>&quot;sda&quot;</strong></li>
 <li>Færdiggør installationen og genstart</li>
 <li>Login som <strong>&quot;bibbox&quot;</strong></li>
+<li>Kør &quot;<strong>ifconfig</strong>&quot; og notere IP adresse</li>
 <li>Indsæt USB nøgle med install scripts - <strong>&quot;sudo mount /dev/sdb1 /media/cdrom&quot;</strong></li>
 <li>Kopier scripts og drivers - <strong>&quot;cp -rf /media/cdrom/install /home/bibbox/&quot;</strong></li>
 <li>Umount USB - <strong>&quot;sudo umount /media/cdrom&quot;</strong></li>
@@ -330,7 +333,7 @@ Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbasere
 
 <h4 id="toc_12">Step 2 (Select a language)</h4>
 
-<p>Vælg sprog &quot;<strong>English</strong>&quot; man kan også vælge danish, men dette har ingen betydning da det endelige system er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
+<p>Vælg sprog &quot;<strong>English</strong>&quot;. Man kan også vælge danish, da dette ingen betydning har på det endelige system, der er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
 Resten af denne guide antager at valget er engelsk.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/02.png" alt="Drawing" style="width: 500px;"/></p>
@@ -448,7 +451,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <h4 id="toc_26">Step 16 (Set up users and passwords - weak password)</h4>
 
-<p>Hvis du har valgt en adgangskode som systemet synes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige &quot;<strong>Yes</strong>&quot; til at acceptere svagt password.</p>
+<p>Hvis du har valgt en adgangskode som systemet syntes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige &quot;<strong>Yes</strong>&quot; til at acceptere svagt password.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/17.png" alt="Drawing" style="width: 500px;"/></p>
 
@@ -532,7 +535,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <p>For at boote systemet op efter installation skal grub installeres på master boot record. 
 Så vælg &quot;<strong>Yes</strong>&quot; til dette. 
-Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil være &quot;<strong>sda</strong>&quot; som udgangspunkt.</p>
+Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil være - brug disk valgt i step 21, &quot;<strong>sda</strong>&quot; som udgangspunkt.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/27.png" alt="Drawing" style="width: 500px;"/></p>
 
@@ -559,6 +562,14 @@ Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
 
 <h4 id="toc_40">Step 2</h4>
 
+<p>Hvis MAC adressen skal benytte til netværks opsætning f.eks. ISE. Så fåes denne ved at køre &quot;<strong>ifconfig</strong>&quot; (se skræmbilledet herunder hvor MAC adressen har en rød streg under)</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_001.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_41">Step 3</h4>
+
 <p>Indsæt USB nøglen med BibBox installations scriptet og mount denne ind i &quot;<strong>/media/cdrom</strong>&quot;. 
 USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis der er flere USB nøgler komme som næste bogstav &quot;<em>sdc1</em>&quot;.</p>
 
@@ -566,7 +577,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_41">Step 3</h4>
+<h4 id="toc_42">Step 4</h4>
 
 <p>Kopier installationsfolderen med script og drivers ind i hjemmemappen for &quot;<em>bibbox</em>&quot;-brugeren.</p>
 
@@ -574,7 +585,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_42">Step 4</h4>
+<h4 id="toc_43">Step 5</h4>
 
 <p>Kør installationsscriptet ved at gå ind i mappen install. </p>
 
@@ -582,7 +593,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_43">Step 5</h4>
+<h4 id="toc_44">Step 6</h4>
 
 <p>Eksekver filen &quot;<em>install.sh</em>&quot; for at påbegynde installations processen af BibBox SC software.</p>
 
@@ -590,7 +601,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_44">Step 6</h4>
+<h4 id="toc_45">Step 7</h4>
 
 <p>Første skridt i installations scriptet er om du vil benytte en statisk IP adresse eller forsætte med en dynamisk IP. 
 Vi antager her at vi fortsætter med en dynamisk IP (statisk IP kan sættes senere) og vælger derefter at slå WIFI fra på maskinen (normalt start den med &quot;<em>wlp</em>&quot;).</p>
@@ -602,9 +613,9 @@ til åbne netværk og det derved har forstyret hentningen af filer under install
 
 <hr/>
 
-<h4 id="toc_45">Step 7</h4>
+<h4 id="toc_46">Step 8</h4>
 
-<p>Herefter starter installationen med at hente filer og laver forskellige opsætninger. 
+<p>Herefter starter installationen med at hente filer og lave de forskellige opsætninger. 
 Dette vil tage en del tid alt efter hastigheden på nettet. 
 Under installationen kan der blive spurgt efter &quot;<em>bibbox</em>&quot; brugerens adgangskode, hvilket man så bare skal indtaste. </p>
 
@@ -619,11 +630,11 @@ som så kan uploade konfigurationen til SC maskinen.</p>
 
 <hr/>
 
-<h1 id="toc_46">Static IP</h1>
+<h1 id="toc_47">Static IP</h1>
 
 <p>Efter installationen kan man åbne en ny terminal og skifte til en statisk IP med scriptet &quot;<em>ip.sh</em>&quot; i &quot;<em>install</em>&quot; mappen.</p>
 
-<h4 id="toc_47">Step 1</h4>
+<h4 id="toc_48">Step 1</h4>
 
 <p>For at få adgang til en terminal skal man trykke &quot;<strong>ctrl+w</strong>&quot; og hurtigt klikke på højre mus tast på den lyse grå baggrund 
 før Google Chrome når at genstarte. Man vil så få en menu (som vist på billedet), hvis man ikke klikker andre steder 
@@ -635,7 +646,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_48">Step 2</h4>
+<h4 id="toc_49">Step 2</h4>
 
 <p>Den opstartede terminal med Google Chrome i baggrunden.</p>
 
@@ -643,31 +654,31 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_49">Step 3</h4>
+<h4 id="toc_50">Step 3</h4>
 
-<p>Gå ind i &quot;<em>install</em>&quot; folderen og kør kommandoen &quot;<strong>./ip.sh</strong>&quot; for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skift til DHCP, ved at svare &quot;<strong>y</strong>&quot; til første spørgsmål. Men her antager vi at man svare &quot;<strong>n</strong>&quot; og &quot;<strong>y</strong>&quot; til næste spørgsmål om at sætte en statisk IP.</p>
+<p>Gå ind i &quot;<em>install</em>&quot; folderen og kør kommandoen &quot;<strong>./ip.sh</strong>&quot; for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skifte til DHCP, ved at svare &quot;<strong>y</strong>&quot; til første spørgsmål. Men her antager vi at man svarer &quot;<strong>n</strong>&quot; og &quot;<strong>y</strong>&quot; til næste spørgsmål om at sætte en statisk IP.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png?1" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_50">Step 4</h4>
+<h4 id="toc_51">Step 4</h4>
 
-<p>Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være &quot;<em>enp3s0</em>&quot;. Så billedet herunder passer ikke med en Intel nuc, men en virtual maskine).</p>
+<p>Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være &quot;<em>enp3s0</em>&quot;. Billedet herunder passer ikke med en Intel nuc, men en virtual maskine).</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png?1" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_51">Step 5</h4>
+<h4 id="toc_52">Step 5</h4>
 
-<p>Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på &quot;<strong>enter</strong>&quot; uden at angiv noget for det enkelte valg. Herefter skal man angiv &quot;<em>bibbox</em>&quot; brugerens adgangskode for at foretage ændringeren.</p>
+<p>Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på &quot;<strong>enter</strong>&quot; uden at angive noget for det enkelte valg. Herefter skal man angive &quot;<em>bibbox</em>&quot; brugerens adgangskode for at foretage ændringeren.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png?1" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_52">Step 6</h4>
+<h4 id="toc_53">Step 6</h4>
 
 <p>Slå WIFI fra ved at vælge det wireless netkort (starter normalt med &quot;<em>wlp</em>&quot;).</p>
 
@@ -675,7 +686,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_53">Step 7</h4>
+<h4 id="toc_54">Step 7</h4>
 
 <p>Genstart maskinen for at sikre at ændringen slår igennem. Dette gøres ved at skrive &quot;<strong>reboot</strong>&quot; og trykke &quot;<strong>enter</strong>&quot;.</p>
 
