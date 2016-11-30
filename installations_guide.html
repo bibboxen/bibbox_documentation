@@ -218,7 +218,58 @@ skifter område med &quot;<strong>tabulator</strong>&quot; og bekræfter sine va
 <p><strong>Hint</strong>: &quot;<strong>tab</strong>&quot; kan også bruges til at auto-complete kommandoer og stier i filesystemet. 
 To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvis der er mere end en auto-complete mulighed.</p>
 
-<h2 id="toc_1">Kort gennemgang.</h2>
+<h2 id="toc_1">Preinstall (Intel NUC)</h2>
+
+<p>Hvis du ikke køre system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.</p>
+
+<h3 id="toc_2">BIOS opdatering</h3>
+
+<p>Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for dette skriv vil sige <a href="https://downloadcenter.intel.com/download/26445/BIOS-Update-PYBSWCEL-86A-">PYBSWCEL.86A - 058</a>. For mere information omkring opdatering læse <a href="http://www.intel.com/content/www/us/en/support/boards-and-kits/000005636.html">Intel&#39;s opdatering guide</a>.</p>
+
+<h3 id="toc_3">BIOS/UEFI konfiguration Intel NUC</h3>
+
+<p>Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at overkommer det skal man lave følgende ændring i selve BIOS konfigurationen.</p>
+
+<h4 id="toc_4">Step 1 (Home screen)</h4>
+
+<p>Tryk F2 ved <em>&quot;Intel NUC&quot;</em> logo&#39;et under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge &quot;<strong>Advanced</strong>&quot; (fremhævet med rød cirkel) under &quot;<em>Boot Order</em>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios1.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_5">Step 2 (Boot Order)</h4>
+
+<p>Klik på &quot;<strong>Boot Configuration</strong>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios2.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_6">Step 3</h4>
+
+<p>Vælg &quot;<strong>OS Selection</strong>&quot; dropdown boksen og vælg &quot;<em>Linux</em>&quot; i denne.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios3.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_7">Step 4</h4>
+
+<p>Tryk på &quot;<strong>exit</strong>&quot; ikonet og svar &quot;<strong>Yes</strong>&quot; til at gemme ændringeren.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios4.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h3 id="toc_8">Boot Linux installation med UEFI</h3>
+
+<ol>
+<li>Tryk F10 ved &quot;<em>Intel NUC</em>&quot; logo&#39;et</li>
+<li>Vælg &quot;<strong>UEFI : USB : SanDisk Cruzer.....</strong>&quot;</li>
+</ol>
+
+<h2 id="toc_9">Kort gennemgang.</h2>
 
 <ol>
 <li>Install Ubuntu Server</li>
@@ -247,8 +298,9 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 <li>Kør scriptet - <strong>&quot;cd /home/bibbox/install&quot;</strong> og <strong>&quot;./install.sh&quot;</strong></li>
 <li>Hvis maskinen ikke er på det rigtig netværk vælg <strong>&quot;n&quot;</strong> til at sætte static IP</li>
 <li>Vælg wireless netkort og slå dette fra. Normalt starter det med <strong>&quot;wlp&quot;</strong></li>
-<li>Hvis den spørger efter password skriv <em>bibbox</em>-brugens adgangskode. Dette kan ske flere gang under installationen,
+<li>Hvis den spørger efter password skriv <em>bibbox</em>-brugerens adgangskode. Dette kan ske flere gang under installationen,
 hvis denne tager længere tid end normalt.</li>
+<li>Hvis den spørger om andet end specificeret i vejledningen ovenfor skal der svares &quot;no&quot; i alle tilfælde.</li>
 </ol>
 
 <p><strong>Skift til statisk IP</strong></p>
@@ -265,9 +317,9 @@ hvis denne tager længere tid end normalt.</li>
 <li>Reboot ved at skrive <strong>&quot;reboot&quot;</strong> og tryk enter</li>
 </ol>
 
-<h2 id="toc_2">Detaljeret gennemgang</h2>
+<h2 id="toc_10">Detaljeret gennemgang</h2>
 
-<h4 id="toc_3">Step 1</h4>
+<h4 id="toc_11">Step 1</h4>
 
 <p>Efter boot op vil den første skærm vise de installationsmuligheder man har fra USB pen&#39;en. 
 Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbaseret. Men lige meget hvad skal man vælge punktet &quot;<strong>Install Ubuntu Server</strong>&quot;.</p>
@@ -276,7 +328,7 @@ Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbasere
 
 <hr/>
 
-<h4 id="toc_4">Step 2 (Select a language)</h4>
+<h4 id="toc_12">Step 2 (Select a language)</h4>
 
 <p>Vælg sprog &quot;<strong>English</strong>&quot; man kan også vælge danish, men dette har ingen betydning da det endelige system er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
 Resten af denne guide antager at valget er engelsk.</p>
@@ -285,7 +337,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_5">Step 3 (Select your location - 1)</h4>
+<h4 id="toc_13">Step 3 (Select your location - 1)</h4>
 
 <p>Vælg din location &quot;<strong>Other</strong>&quot; som land.</p>
 
@@ -293,7 +345,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_6">Step 4 (Select your location - 2)</h4>
+<h4 id="toc_14">Step 4 (Select your location - 2)</h4>
 
 <p>Vælg &quot;<strong>Europe</strong>&quot; som region.</p>
 
@@ -301,7 +353,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_7">Step 5 (Select your location - 3)</h4>
+<h4 id="toc_15">Step 5 (Select your location - 3)</h4>
 
 <p>Vælg &quot;<strong>Danmark</strong>&quot; som område.</p>
 
@@ -309,7 +361,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_8">Step 6 (Configure locales)</h4>
+<h4 id="toc_16">Step 6 (Configure locales)</h4>
 
 <p>Vælg &quot;<strong>United Kingdom - en_GB.UTF-8</strong>&quot; som locale til at basere systemet på.</p>
 
@@ -317,7 +369,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_9">Step 7 (Configure the keyboard - 1)</h4>
+<h4 id="toc_17">Step 7 (Configure the keyboard - 1)</h4>
 
 <p>Her skal man vælge &quot;<strong>No</strong>&quot;, da man ellers skal trykke en række specialtaster for automatisk at finde dit keyboard layout, hvilket er langt mere besværligt.</p>
 
@@ -325,7 +377,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_10">Step 8 (Configure the keyboard - 2)</h4>
+<h4 id="toc_18">Step 8 (Configure the keyboard - 2)</h4>
 
 <p>Vælg land &quot;<strong>Danish</strong>&quot;, som gerne skulle være valgt på forhånd, ellers find den på listen og tryk enter.</p>
 
@@ -333,7 +385,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_11">Step 9 (Configure the keyboard - 3)</h4>
+<h4 id="toc_19">Step 9 (Configure the keyboard - 3)</h4>
 
 <p>Vælg igen &quot;<strong>Danish</strong>&quot; medmindre du vil benytte et ikke standard dansk tastatur.</p>
 
@@ -341,7 +393,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_12">Step 10 (Automatically detected network)</h4>
+<h4 id="toc_20">Step 10 (Automatically detected network)</h4>
 
 <p>Installationen vil nu automatisk finde det tilkoblede netværk (DHCP) og oprette forbindelse til Internettet.</p>
 
@@ -349,7 +401,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_13">Step 11 (Configure the network - hostname)</h4>
+<h4 id="toc_21">Step 11 (Configure the network - hostname)</h4>
 
 <p>Angiv systemets netværksnavn.</p>
 
@@ -357,7 +409,7 @@ Resten af denne guide antager at valget er engelsk.</p>
 
 <hr/>
 
-<h4 id="toc_14">Step 12 (Set up users and passwords - full name)</h4>
+<h4 id="toc_22">Step 12 (Set up users and passwords - full name)</h4>
 
 <p>Opret superburger på systemet. Det er ikke krævet, at denne bruger hedder &quot;bibbox&quot;, men det er anbefaldet. 
 NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan bruges. Men dette er ikke testet på nuværende tidspunkt.</p>
@@ -368,7 +420,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_15">Step 13 (Set up users and passwords - user name)</h4>
+<h4 id="toc_23">Step 13 (Set up users and passwords - user name)</h4>
 
 <p>Vælg samme navn som i forrige skridt.</p>
 
@@ -378,7 +430,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_16">Step 14 (Set up users and passwords - password)</h4>
+<h4 id="toc_24">Step 14 (Set up users and passwords - password)</h4>
 
 <p>Angiv superbrugerens adgangskode - husk at denne skal bruges senere til at sikkerhedsopdatere systemet mm.</p>
 
@@ -386,7 +438,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_17">Step 15 (Set up users and passwords - password verify)</h4>
+<h4 id="toc_25">Step 15 (Set up users and passwords - password verify)</h4>
 
 <p>Angiv adgangskoden igen.</p>
 
@@ -394,7 +446,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_18">Step 16 (Set up users and passwords - weak password)</h4>
+<h4 id="toc_26">Step 16 (Set up users and passwords - weak password)</h4>
 
 <p>Hvis du har valgt en adgangskode som systemet synes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige &quot;<strong>Yes</strong>&quot; til at acceptere svagt password.</p>
 
@@ -402,7 +454,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_19">Step 17 (Set up users and passwords - encrypt)</h4>
+<h4 id="toc_27">Step 17 (Set up users and passwords - encrypt)</h4>
 
 <p>Vælg &quot;<strong>No</strong>&quot; til at kryptere hjemmemappen for brugeren.</p>
 
@@ -410,7 +462,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_20">Step 18 (Configure the Clock)</h4>
+<h4 id="toc_28">Step 18 (Configure the Clock)</h4>
 
 <p>Hvis der er forbindelse til Internettet (NTP) vil der være valgt &quot;<strong>Europe/Copenhagen</strong>&quot; som tidszone. Ellers vælg den på listen.</p>
 
@@ -418,7 +470,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_21">Step 19 (Partition disks - 1)</h4>
+<h4 id="toc_29">Step 19 (Partition disks - 1)</h4>
 
 <p>Hvis den spørger om den skal unmount partitioner så vælg &quot;<strong>Yes</strong>&quot; til at umount dem.</p>
 
@@ -426,7 +478,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_22">Step 20 (Partition disks - 2)</h4>
+<h4 id="toc_30">Step 20 (Partition disks - 2)</h4>
 
 <p>Til partitionering af disken vælg &quot;<strong>Guided - use entire disk</strong>&quot; for at benytte hele disken.</p>
 
@@ -434,7 +486,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_23">Step 21 (Partition disks - 3)</h4>
+<h4 id="toc_31">Step 21 (Partition disks - 3)</h4>
 
 <p>Vælge hoveddisk, normalt kaldt &quot;<em>sda</em>&quot;, hvis der er flere på listen.</p>
 
@@ -442,7 +494,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_24">Step 22 (Partition disks - 4)</h4>
+<h4 id="toc_32">Step 22 (Partition disks - 4)</h4>
 
 <p>Vælg at skrive ændringer til disken. &quot;<strong>Yes</strong>&quot; for at oprette partitionerne.</p>
 
@@ -450,7 +502,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_25">Step 23 (Configure the package manger)</h4>
+<h4 id="toc_33">Step 23 (Configure the package manger)</h4>
 
 <p>Vælg ingen proxy ved at trykke &quot;<strong>enter</strong>&quot;.</p>
 
@@ -458,7 +510,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_26">Step 24 (Configure tasksel)</h4>
+<h4 id="toc_34">Step 24 (Configure tasksel)</h4>
 
 <p>Vi ønsker ikke at benytte automatiske opdateringer, da vi gerne vil have kontrol over softwaren på SC systemet for at sikre det er stabilt.</p>
 
@@ -468,7 +520,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h3 id="toc_27">Step 25 (Software selection)</h3>
+<h3 id="toc_35">Step 25 (Software selection)</h3>
 
 <p>Brug tab til at komme til &quot;<strong>Continue</strong>&quot; så vi kun vælger &quot;<strong>standard system utilities</strong>&quot;, som det eneste vi installerer på nuværende tidspunkt.</p>
 
@@ -476,7 +528,7 @@ NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan br
 
 <hr/>
 
-<h4 id="toc_28">Step 26 (Install the GRUB boot loader on a hard disk)</h4>
+<h4 id="toc_36">Step 26 (Install the GRUB boot loader on a hard disk)</h4>
 
 <p>For at boote systemet op efter installation skal grub installeres på master boot record. 
 Så vælg &quot;<strong>Yes</strong>&quot; til dette. 
@@ -486,7 +538,7 @@ Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil væ
 
 <hr/>
 
-<h4 id="toc_29">Step 27 (Finish the installation)</h4>
+<h4 id="toc_37">Step 27 (Finish the installation)</h4>
 
 <p>Fjern USB installations-pen&#39;en og vælg &quot;<strong>Continue</strong>&quot; hvilket vil genstarte maskinen. 
 Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
@@ -495,9 +547,9 @@ Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
 
 <hr/>
 
-<h2 id="toc_30">Kørsel af BibBox <em>install.sh</em> script</h2>
+<h2 id="toc_38">Kørsel af BibBox <em>install.sh</em> script</h2>
 
-<h4 id="toc_31">Step 1</h4>
+<h4 id="toc_39">Step 1</h4>
 
 <p>Log ind som brugeren &quot;<strong>bibbox</strong>&quot; på systemet.</p>
 
@@ -505,7 +557,7 @@ Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
 
 <hr/>
 
-<h4 id="toc_32">Step 2</h4>
+<h4 id="toc_40">Step 2</h4>
 
 <p>Indsæt USB nøglen med BibBox installations scriptet og mount denne ind i &quot;<strong>/media/cdrom</strong>&quot;. 
 USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis der er flere USB nøgler komme som næste bogstav &quot;<em>sdc1</em>&quot;.</p>
@@ -514,7 +566,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_33">Step 3</h4>
+<h4 id="toc_41">Step 3</h4>
 
 <p>Kopier installationsfolderen med script og drivers ind i hjemmemappen for &quot;<em>bibbox</em>&quot;-brugeren.</p>
 
@@ -522,7 +574,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_34">Step 4</h4>
+<h4 id="toc_42">Step 4</h4>
 
 <p>Kør installationsscriptet ved at gå ind i mappen install. </p>
 
@@ -530,7 +582,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_35">Step 5</h4>
+<h4 id="toc_43">Step 5</h4>
 
 <p>Eksekver filen &quot;<em>install.sh</em>&quot; for at påbegynde installations processen af BibBox SC software.</p>
 
@@ -538,7 +590,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_36">Step 6</h4>
+<h4 id="toc_44">Step 6</h4>
 
 <p>Første skridt i installations scriptet er om du vil benytte en statisk IP adresse eller forsætte med en dynamisk IP. 
 Vi antager her at vi fortsætter med en dynamisk IP (statisk IP kan sættes senere) og vælger derefter at slå WIFI fra på maskinen (normalt start den med &quot;<em>wlp</em>&quot;).</p>
@@ -550,7 +602,7 @@ til åbne netværk og det derved har forstyret hentningen af filer under install
 
 <hr/>
 
-<h4 id="toc_37">Step 7</h4>
+<h4 id="toc_45">Step 7</h4>
 
 <p>Herefter starter installationen med at hente filer og laver forskellige opsætninger. 
 Dette vil tage en del tid alt efter hastigheden på nettet. 
@@ -567,11 +619,11 @@ som så kan uploade konfigurationen til SC maskinen.</p>
 
 <hr/>
 
-<h1 id="toc_38">Static IP</h1>
+<h1 id="toc_46">Static IP</h1>
 
 <p>Efter installationen kan man åbne en ny terminal og skifte til en statisk IP med scriptet &quot;<em>ip.sh</em>&quot; i &quot;<em>install</em>&quot; mappen.</p>
 
-<h4 id="toc_39">Step 1</h4>
+<h4 id="toc_47">Step 1</h4>
 
 <p>For at få adgang til en terminal skal man trykke &quot;<strong>ctrl+w</strong>&quot; og hurtigt klikke på højre mus tast på den lyse grå baggrund 
 før Google Chrome når at genstarte. Man vil så få en menu (som vist på billedet), hvis man ikke klikker andre steder 
@@ -583,7 +635,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_40">Step 2</h4>
+<h4 id="toc_48">Step 2</h4>
 
 <p>Den opstartede terminal med Google Chrome i baggrunden.</p>
 
@@ -591,7 +643,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_41">Step 3</h4>
+<h4 id="toc_49">Step 3</h4>
 
 <p>Gå ind i &quot;<em>install</em>&quot; folderen og kør kommandoen &quot;<strong>./ip.sh</strong>&quot; for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skift til DHCP, ved at svare &quot;<strong>y</strong>&quot; til første spørgsmål. Men her antager vi at man svare &quot;<strong>n</strong>&quot; og &quot;<strong>y</strong>&quot; til næste spørgsmål om at sætte en statisk IP.</p>
 
@@ -599,7 +651,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_42">Step 4</h4>
+<h4 id="toc_50">Step 4</h4>
 
 <p>Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være &quot;<em>enp3s0</em>&quot;. Så billedet herunder passer ikke med en Intel nuc, men en virtual maskine).</p>
 
@@ -607,7 +659,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_43">Step 5</h4>
+<h4 id="toc_51">Step 5</h4>
 
 <p>Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på &quot;<strong>enter</strong>&quot; uden at angiv noget for det enkelte valg. Herefter skal man angiv &quot;<em>bibbox</em>&quot; brugerens adgangskode for at foretage ændringeren.</p>
 
@@ -615,7 +667,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_44">Step 6</h4>
+<h4 id="toc_52">Step 6</h4>
 
 <p>Slå WIFI fra ved at vælge det wireless netkort (starter normalt med &quot;<em>wlp</em>&quot;).</p>
 
@@ -623,7 +675,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_45">Step 7</h4>
+<h4 id="toc_53">Step 7</h4>
 
 <p>Genstart maskinen for at sikre at ændringen slår igennem. Dette gøres ved at skrive &quot;<strong>reboot</strong>&quot; og trykke &quot;<strong>enter</strong>&quot;.</p>
 
