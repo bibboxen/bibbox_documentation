@@ -16,14 +16,14 @@ __Hint__: "__tab__" kan også bruges til at auto-complete kommandoer og stier i 
 To hurtige tryk på "__tab__" vil komme med foreslag, hvis der er mere end en auto-complete mulighed.
 
 ## Preinstall (Intel NUC)
-Hvis du ikke køre system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.
+Hvis du ikke kører system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.
 
 ### BIOS opdatering
 Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for dette skriv vil sige [PYBSWCEL.86A - 058](https://downloadcenter.intel.com/download/26445/BIOS-Update-PYBSWCEL-86A-). For mere information omkring opdatering læse [Intel's opdatering guide] (http://www.intel.com/content/www/us/en/support/boards-and-kits/000005636.html).
 
 
 ### BIOS/UEFI konfiguration Intel NUC
-Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at overkommer det skal man lave følgende ændring i selve BIOS konfigurationen.
+Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at komme videre det skal man lave følgende ændring i selve BIOS konfigurationen.
 
 #### Step 1 (Home screen)
 Tryk F2 ved _"Intel NUC"_ logo'et under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge "__Advanced__" (fremhævet med rød cirkel) under "_Boot Order_".
@@ -60,7 +60,7 @@ Tryk på "__exit__" ikonet og svar "__Yes__" til at gemme ændringeren.
 2. Vælg "__UEFI : USB : SanDisk Cruzer.....__"
 
 
-## Kort gennemgang.
+## Kort gennemgang 
 1. Install Ubuntu Server
 2. Vælg sprog __"English"__
 3. Vælg location __"other"__, __"Europe"__ og derefter __"Danmark"__
@@ -108,7 +108,7 @@ __Skift til statisk IP__
 
 
 
-## Detaljeret gennemgang
+## Detaljeret gennemgang 
 
 #### Step 1
 Efter boot op vil den første skærm vise de installationsmuligheder man har fra USB pen'en. 
@@ -119,7 +119,7 @@ Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbasere
 -------------------------
 
 #### Step 2 (Select a language)
-Vælg sprog "__English__" man kan også vælge danish, men dette har ingen betydning da det endelige system er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
+Vælg sprog "__English__". Man kan også vælge danish, da dette ingen betydning har på det endelige system, der er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
 Resten af denne guide antager at valget er engelsk.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/02.png" alt="Drawing" style="width: 500px;"/>
@@ -223,7 +223,7 @@ Angiv adgangskoden igen.
 -------------------------
 
 #### Step 16 (Set up users and passwords - weak password)
-Hvis du har valgt en adgangskode som systemet synes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige "__Yes__" til at acceptere svagt password.
+Hvis du har valgt en adgangskode som systemet syntes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige "__Yes__" til at acceptere svagt password.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/17.png" alt="Drawing" style="width: 500px;"/>
 
@@ -297,7 +297,7 @@ Brug tab til at komme til "__Continue__" så vi kun vælger "__standard system u
 #### Step 26 (Install the GRUB boot loader on a hard disk)
 For at boote systemet op efter installation skal grub installeres på master boot record. 
 Så vælg "__Yes__" til dette. 
-Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil være "__sda__" som udgangspunkt.
+Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil være - brug disk valgt i step 21, "__sda__" som udgangspunkt.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/27.png" alt="Drawing" style="width: 500px;"/>
 
@@ -364,7 +364,7 @@ til åbne netværk og det derved har forstyret hentningen af filer under install
 -------------------------
 
 #### Step 7
-Herefter starter installationen med at hente filer og laver forskellige opsætninger. 
+Herefter starter installationen med at hente filer og lave de forskellige opsætninger. 
 Dette vil tage en del tid alt efter hastigheden på nettet. 
 Under installationen kan der blive spurgt efter "_bibbox_" brugerens adgangskode, hvilket man så bare skal indtaste. 
 
@@ -402,21 +402,21 @@ Den opstartede terminal med Google Chrome i baggrunden.
 -------------------------
 
 #### Step 3
-Gå ind i "_install_" folderen og kør kommandoen "__./ip.sh__" for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skift til DHCP, ved at svare "__y__" til første spørgsmål. Men her antager vi at man svare "__n__" og "__y__" til næste spørgsmål om at sætte en statisk IP.
+Gå ind i "_install_" folderen og kør kommandoen "__./ip.sh__" for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skifte til DHCP, ved at svare "__y__" til første spørgsmål. Men her antager vi at man svarer "__n__" og "__y__" til næste spørgsmål om at sætte en statisk IP.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 4
-Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være "_enp3s0_". Så billedet herunder passer ikke med en Intel nuc, men en virtual maskine).
+Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være "_enp3s0_". Billedet herunder passer ikke med en Intel nuc, men en virtual maskine).
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png?1" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
 #### Step 5
-Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på "__enter__" uden at angiv noget for det enkelte valg. Herefter skal man angiv "_bibbox_" brugerens adgangskode for at foretage ændringeren.
+Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på "__enter__" uden at angive noget for det enkelte valg. Herefter skal man angive "_bibbox_" brugerens adgangskode for at foretage ændringeren.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png?1" alt="Drawing" style="width: 500px;"/>
 
