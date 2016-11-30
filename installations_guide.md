@@ -82,7 +82,7 @@ Tryk på "__exit__" ikonet og svar "__Yes__" til at gemme ændringeren.
 17. Install Grub i master boot record, hvis det kommer op vælg så disken __"sda"__
 18. Færdiggør installationen og genstart
 19. Login som __"bibbox"__
-20. Kør "__ifconfig__" og notere IP adresse
+20. Kør "__ifconfig__" og notere MAC adresse
 21. Indsæt USB nøgle med install scripts - __"sudo mount /dev/sdb1 /media/cdrom"__
 22. Kopier scripts og drivers - __"cp -rf /media/cdrom/install /home/bibbox/"__
 23. Umount USB - __"sudo umount /media/cdrom"__
