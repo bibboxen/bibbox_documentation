@@ -80,16 +80,17 @@ Tryk på "__exit__" ikonet og svar "__Yes__" til at gemme ændringeren.
 17. Install Grub i master boot record, hvis det kommer op vælg så disken __"sda"__
 18. Færdiggør installationen og genstart
 19. Login som __"bibbox"__
-20. Indsæt USB nøgle med install scripts - __"sudo mount /dev/sdb1 /media/cdrom"__
-21. Kopier scripts og drivers - __"cp -rf /media/cdrom/install /home/bibbox/"__
-22. Umount USB - __"sudo umount /media/cdrom"__
-23. Lav scriptet executable - __"sudo chmod +x /home/bibbox/install/*.sh"__
-24. Kør scriptet - __"cd /home/bibbox/install"__ og __"./install.sh"__
-25. Hvis maskinen ikke er på det rigtig netværk vælg __"n"__ til at sætte static IP
-26. Vælg wireless netkort og slå dette fra. Normalt starter det med __"wlp"__
-27. Hvis den spørger efter password skriv _bibbox_-brugerens adgangskode. Dette kan ske flere gang under installationen,
+20. Kør "__ifconfig__" og notere IP adresse
+21. Indsæt USB nøgle med install scripts - __"sudo mount /dev/sdb1 /media/cdrom"__
+22. Kopier scripts og drivers - __"cp -rf /media/cdrom/install /home/bibbox/"__
+23. Umount USB - __"sudo umount /media/cdrom"__
+24. Lav scriptet executable - __"sudo chmod +x /home/bibbox/install/*.sh"__
+25. Kør scriptet - __"cd /home/bibbox/install"__ og __"./install.sh"__
+26. Hvis maskinen ikke er på det rigtig netværk vælg __"n"__ til at sætte static IP
+27. Vælg wireless netkort og slå dette fra. Normalt starter det med __"wlp"__
+28. Hvis den spørger efter password skriv _bibbox_-brugerens adgangskode. Dette kan ske flere gang under installationen,
  hvis denne tager længere tid end normalt.
-28. Hvis den spørger om andet end specificeret i vejledningen ovenfor skal der svares "no" i alle tilfælde.
+29. Hvis den spørger om andet end specificeret i vejledningen ovenfor skal der svares "no" i alle tilfælde.
 
 
 __Skift til statisk IP__
@@ -321,9 +322,17 @@ Log ind som brugeren "__bibbox__" på systemet.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_01.png" alt="Drawing" style="width: 500px;"/>
 
+
 -------------------------
 
 #### Step 2
+Hvis MAC adressen skal benytte til netværks opsætning f.eks. ISE. Så fåes denne ved at køre "__ifconfig__" (se skræmbilledet herunder hvor MAC adresseb har en rød streg under)
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_02.png" alt="Drawing" style="width: 500px;"/>
+
+-------------------------
+
+#### Step 3
 Indsæt USB nøglen med BibBox installations scriptet og mount denne ind i "__/media/cdrom__". 
 USB nøglen vil normalt komme frem som "_sdb1_", men kan hvis der er flere USB nøgler komme som næste bogstav "_sdc1_".
 
@@ -331,28 +340,28 @@ USB nøglen vil normalt komme frem som "_sdb1_", men kan hvis der er flere USB n
 
 -------------------------
 
-#### Step 3
+#### Step 4
 Kopier installationsfolderen med script og drivers ind i hjemmemappen for "_bibbox_"-brugeren.
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_03.png" alt="Drawing" style="width: 500px;"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_001.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 4
+#### Step 5
 Kør installationsscriptet ved at gå ind i mappen install. 
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_04.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 5
+#### Step 6
 Eksekver filen "_install.sh_" for at påbegynde installations processen af BibBox SC software.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_05.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 6
+#### Step 7
 Første skridt i installations scriptet er om du vil benytte en statisk IP adresse eller forsætte med en dynamisk IP. 
 Vi antager her at vi fortsætter med en dynamisk IP (statisk IP kan sættes senere) og vælger derefter at slå WIFI fra på maskinen (normalt start den med "_wlp_").
 
@@ -363,7 +372,7 @@ til åbne netværk og det derved har forstyret hentningen af filer under install
 
 -------------------------
 
-#### Step 7
+#### Step 8
 Herefter starter installationen med at hente filer og lave de forskellige opsætninger. 
 Dette vil tage en del tid alt efter hastigheden på nettet. 
 Under installationen kan der blive spurgt efter "_bibbox_" brugerens adgangskode, hvilket man så bare skal indtaste. 
