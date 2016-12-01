@@ -25,7 +25,7 @@ Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for d
 ### BIOS/UEFI konfiguration Intel NUC
 Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at komme videre det skal man lave følgende ændring i selve BIOS konfigurationen.
 
-__Note__: Husk at sætte maskine til at start automatisk ved "__Power failure__", hvilet osse gøres i BIOS.
+__Note__: Husk at sætte maskine til at start automatisk ved "__Power failure__" til "__Power on__", hvilet osse gøres i BIOS.
 
 #### Step 1 (Home screen)
 Tryk F2 ved _"Intel NUC"_ logo'et under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge "__Advanced__" (fremhævet med rød cirkel) under "_Boot Order_".
