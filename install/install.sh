@@ -279,6 +279,7 @@ rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
 sudo apt-get autoremove -y || exit 1
+sudo apt-get --purge remove avahi-daemon
 
 ## Restart the show
 reboot
