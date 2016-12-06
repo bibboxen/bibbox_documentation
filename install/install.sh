@@ -14,8 +14,8 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-URL="https://github.com/bibboxen/bibbox/releases/download/v1.0.0/"
-FILE="v1.0.0.tar.gz"
+URL="https://github.com/bibboxen/bibbox/releases/download/v1.1.0/"
+FILE="v1.1.0.tar.gz"
 VERSION="v1.0.0"
 
 ## Define colors.
