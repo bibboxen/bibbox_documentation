@@ -276,11 +276,14 @@ wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-
 sudo dpkg -i wkhtmltox-0.12.2.1_linux-trusty-amd64.deb || exit 1
 rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
+## Fix time synce (aarhus)
+sudo apt-get install ntp ntpdate ntpstat -y || exit 1
+sudo sh -c "sed -i 'pool 0.ubuntu.pool.ntp.org iburst/c pool ntp.aarhuskommune.local' /etc/ntp.conf"
+
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
 sudo apt-get --purge remove avahi-daemon -y || exit 1
 sudo apt-get autoremove -y || exit 1
-sudo apt-get install ntp -y || exit 1
 
 ## Restart the show
 reboot
