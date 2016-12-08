@@ -277,7 +277,7 @@ sudo dpkg -i wkhtmltox-0.12.2.1_linux-trusty-amd64.deb || exit 1
 rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
 ## Fix time synce (aarhus)
-sudo apt-get install ntp ntpdate ntpstat -y || exit 1
+sudo apt-get install ntp ntpstat -y || exit 1
 sudo sh -c "sed -i 'pool 0.ubuntu.pool.ntp.org iburst/c pool ntp.aarhuskommune.local' /etc/ntp.conf"
 
 ## Clean up
