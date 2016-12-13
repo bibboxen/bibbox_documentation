@@ -14,9 +14,9 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-URL="https://github.com/bibboxen/bibbox/releases/download/v1.1.0/"
-FILE="v1.1.0.tar.gz"
-VERSION="v1.1.0"
+URL="https://github.com/bibboxen/bibbox/releases/download/v1.2.0/"
+FILE="v1.2.0.tar.gz"
+VERSION="v1.2.0"
 
 ## Define colors.
 BOLD=$(tput bold)
@@ -278,7 +278,7 @@ rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
 ## Fix time synce (aarhus)
 sudo apt-get install ntp ntpstat -y || exit 1
-sudo sh -c "sed -i 'pool 0.ubuntu.pool.ntp.org iburst/c pool ntp.aarhuskommune.local' /etc/ntp.conf"
+sudo echo "pool ntp.aarhuskommune.local iburst" >> /etc/ntp.conf
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
