@@ -179,9 +179,9 @@ if [ -d "${SELF}/feig" ]; then
 fi
 
 ## Add bibbox packages (use symlink to match later update process).
-mkdir ${DIR}/${VERSION}/
-wget -q ${URL}${FILE}
-tar -zxf ${FILE} -C ${DIR}/${VERSION}/
+mkdir ${DIR}/${VERSION}/ || exit 1
+wget -q ${URL}${FILE} || exit 1
+tar -zxf ${FILE} -C ${DIR}/${VERSION}/ || exit 1
 rm -rf ${URL}${FILE}
 ln -s ${DIR}/${VERSION}/ bibbox
 
