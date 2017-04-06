@@ -278,7 +278,7 @@ rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
 ## Fix time synce (aarhus)
 sudo apt-get install ntp ntpstat -y || exit 1
-sudo echo "pool ntp.aarhuskommune.local iburst" >> /etc/ntp.conf
+sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
