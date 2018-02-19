@@ -276,7 +276,7 @@ sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
 
 ## Install wkhtmltopdf
 sudo apt-get install xfonts-75dpi -y || exit 1
-sudo dpkg -i packages/wkhtmltox_0.14-bibbox.deb || exit 1
+sudo dpkg -i ${SELF}/packages/wkhtmltox_0.14-bibbox.deb || exit 1
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
