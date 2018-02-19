@@ -270,15 +270,13 @@ sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /et
 sudo apt-get update || exit 1
 sudo apt-get install google-chrome-stable -y || exit 1
 
-## Install wkhtmltopdf
-sudo apt-get install xfonts-75dpi -y || exit 1
-wget https://bitbucket.org/wkhtmltopdf/wkhtmltopdf/downloads/wkhtmltox-0.13.0-alpha-7b36694_linux-trusty-amd64.deb
-sudo dpkg -i wkhtmltox-0.12.2.1_linux-trusty-amd64.deb || exit 1
-rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
-
 ## Fix time synce (aarhus)
 sudo apt-get install ntp ntpstat -y || exit 1
 sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
+
+## Install wkhtmltopdf
+sudo apt-get install xfonts-75dpi -y || exit 1
+sudo dpkg -i packages/wkhtmltox_0.14-bibbox.deb || exit 1
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
