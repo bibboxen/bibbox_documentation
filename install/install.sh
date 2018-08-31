@@ -226,7 +226,7 @@ sudo sh -c "echo 'MaxJobs 1' >> /etc/cups/cupsd.conf"
 sudo service cups restart
 
 ## Install x-server and openbox.
-sudo apt-get install openbox xinit xterm -y || exit 1
+sudo apt-get install openbox xinit xterm numlockx -y || exit 1
 sudo apt-get install lxdm xserver-xorg -y || exit 1
 
 # Auto login.
@@ -240,6 +240,10 @@ cat << DELIM >> ${DIR}/.config/openbox/autostart
 xset s off
 xset s noblank
 xset -dpms
+
+# Enable numlock and disable the key.
+numlockx on
+xmodmap -e 'keycode 77 = NoSymbol Num_Lock'
 
 # Clear caches and other chrome stuff.
 find ~/ -name *chrome* -exec rm -rf {} \;
