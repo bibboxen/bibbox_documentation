@@ -14,7 +14,7 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="v1.5.3"
+VERSION="v1.6.0"
 URL="https://github.com/bibboxen/bibbox/releases/download/${VERSION}/"
 FILE="${VERSION}.tar.gz"
 
@@ -126,7 +126,7 @@ sudo apt-get update || exit 1
 sudo apt-get upgrade -y || exit 1
 
 ## Get NodeJS.
-wget -q -O - https://deb.nodesource.com/setup_6.x | sudo bash
+wget -q -O - https://deb.nodesource.com/setup_10.x | sudo bash
 sudo apt-get install nodejs -y || exit 1
 
 ## Install tools.
