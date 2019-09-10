@@ -261,7 +261,7 @@ while \${RUN_CHROME}; do
           RUN_CHROME=false;
           exit;
         fi
-        /usr/bin/google-chrome --kiosk --no-first-run --disable-translate --enable-offline-auto-reload 'http://localhost:3010'
+        /usr/bin/google-chrome --kiosk --no-first-run --disable-translate --disable-gpu --enable-offline-auto-reload 'http://localhost:3010'
 done) &
 DELIM
 
