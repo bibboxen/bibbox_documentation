@@ -36,90 +36,65 @@ then
 		exit
 fi
 
-## Set the IP (if static).
-# function set_ip {
-#  read -p "Enter IP: " IP
-#  read -p "Netmask (255.255.255.240): " NETMASK
-#  read -p "Gateway (172.16.55.1): " GATEWAY
-#  read -p "DNS 1 (10.150.4.201): " DNS1
-#  read -p "DNS 2 (10.150.4.202): " DNS2
+# Set the IP (if static).
+function set_ip {
+ read -p "Enter IP: " IP
+ read -p "Subnet Mask (28): " SUBNET
+ read -p "Gateway (172.16.55.1): " GATEWAY
+ read -p "DNS 1 (10.150.4.201): " DNS1
+ read -p "DNS 2 (10.150.4.202): " DNS2
 
-#  NETMASK=${NETMASK:-"255.255.255.240"}
-#  GATEWAY=${GATEWAY:-"172.16.55.1"}
-#  DNS1=${DNS1:-"10.150.4.201"}
-#  DNS2=${DNS2:-"10.150.4.202"}
+ SUBNET=${SUBNET:-"28"}
+ GATEWAY=${GATEWAY:-"172.16.55.1"}
+ DNS1=${DNS1:-"10.150.4.201"}
+ DNS2=${DNS2:-"10.150.4.202"}
 
-#   sudo cat << DELIM >> ${DIR}/interfaces
-# source /etc/network/interfaces.d/*
+ echo "network:
+    ethernets:
+        $1:
+            dhcp4: false
+            addresses: [${IP}/${SUBNET}]
+            routes:
+              - to: default
+                via: ${GATEWAY}
+            nameservers:
+              addresses: [${DNS1},${DNS2}]
+    version: 2" | sudo tee /etc/netplan/01-bibbox-network.yaml > /dev/null
+}
 
-# auto lo
-# iface lo inet loopback
+while true; do
+    read -p "Do you wish to set static IP (y/n)? " yn
+    case $yn in
+        [Yy]* )
+					echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
+					echo "Ethernet adapters normally starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
+					echo "Select the interface to configure:"
+					INTERFACES=$(ip -o link show | awk -F': ' '{print $2}' | tail -n +2)
+					INTERFACES+=' Exit'
+					select INTERFACE in ${INTERFACES};
+					do
+						case ${INTERFACE} in
+							'Exit')
+								break 2
+								;;
+							*)
+								set_ip ${INTERFACE}
+								break 2
+								;;
+						esac
+					done
+					break
+					;;
+        [Nn]* )
+					break
+					;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
-# auto $1
-# iface $1 inet static
-#   address ${IP}
-#   netmask ${NETMASK}
-#   gateway ${GATEWAY}
-#   dns-nameservers ${DNS1} ${DNS2}
-# DELIM
-#   sudo mv interfaces /etc/network/interfaces
-
-# }
-
-# while true; do
-#     read -p "Do you wish to set static IP (y/n)? " yn
-#     case $yn in
-#         [Yy]* )
-# 					echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
-# 					echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
-# 					echo "Select the interface to configure:"
-# 					INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
-# 					INTERFACES+=' Exit'
-# 					select INTERFACE in ${INTERFACES};
-# 					do
-# 						case ${INTERFACE} in
-# 							'Exit')
-# 								break 2
-# 								;;
-# 							*)
-# 								set_ip ${INTERFACE}
-# 								break 2
-# 								;;
-# 						esac
-# 					done
-# 					break
-# 					;;
-#         [Nn]* )
-# 					break
-# 					;;
-#         * ) echo "Please answer yes or no.";;
-#     esac
-# done
-
-# ## Disable wify
-# echo "${BOLD}${RED}Disable WIFI to ensure installation.${RESET}"
-# echo "Select WIFI interface to disable:"
-# INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
-# INTERFACES+=' No-wifi'
-# select INTERFACE in ${INTERFACES};
-# do
-# 	case ${INTERFACE} in
-# 		'No-wifi')
-# 			echo "${UNDERLINE}${RED}You known best!${RESET}"
-# 			sleep 2s
-# 			break
-# 			;;
-# 		*)
-# 			sudo sh -c "echo 'iface ${INTERFACE} inet manual' >> /etc/network/interfaces"
-# 			break
-# 			;;
-# 	esac
-
-# done
-
-# ## Restart network anwait for it to be stable.
-# echo "${GREEN}Resetting network connections...${RESET}"
-# sudo service networking restart
+## Restart network anwait for it to be stable.
+echo "${GREEN}Resetting network connections...${RESET}"
+sudo netplan apply
 
 ## Ensure system is up-to-date.
 DEBIAN_FRONTEND=noninteractive
@@ -180,11 +155,6 @@ if [ -d "${SELF}/feig" ]; then
 	done
 	sudo ldconfig ${FEIG_DEST}
 fi
-
-
-
-
-
 
 ## Add bibbox packages (use symlink to match later update process).
 mkdir ${DIR}/${VERSION}/ || exit 1
@@ -277,7 +247,8 @@ DELIM
 cp ${SELF}/rc.xml ${DIR}/.config/openbox
 
 ## Add chrome to the box.
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
+curl -sS https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/google.gpg > /dev/null
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
 sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list"
 sudo apt-get update || exit 1
 sudo apt-get install google-chrome-stable -y || exit 1

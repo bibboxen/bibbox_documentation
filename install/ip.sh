@@ -6,59 +6,51 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 RESET=$(tput sgr0)
 
-## Set the IP (if static).
+# Set the IP (if static).
 function set_ip {
- read -p "IP: " IP
- read -p "Netmask (255.255.255.240): " NETMASK
+ read -p "Enter IP: " IP
+ read -p "Subnet Mask (28): " SUBNET
  read -p "Gateway (172.16.55.1): " GATEWAY
  read -p "DNS 1 (10.150.4.201): " DNS1
  read -p "DNS 2 (10.150.4.202): " DNS2
 
- NETMASK=${NETMASK:-"255.255.255.240"}
+ SUBNET=${SUBNET:-"28"}
  GATEWAY=${GATEWAY:-"172.16.55.1"}
  DNS1=${DNS1:-"10.150.4.201"}
  DNS2=${DNS2:-"10.150.4.202"}
 
-  sudo cat << DELIM >> interfaces.conf
-#The loopback network interface
-auto lo
-iface lo inet loopback
-
-# The primary network interface
-auto $1
-iface $1 inet static
-  address ${IP}
-  netmask ${NETMASK}
-  gateway ${GATEWAY}
-  dns-nameservers ${DNS1} ${DNS2}
-DELIM
-  sudo mv interfaces.conf /etc/network/interfaces
+ echo "network:
+    ethernets:
+        $1:
+            dhcp4: false
+            addresses: [${IP}/${SUBNET}]
+            routes:
+              - to: default
+                via: ${GATEWAY}
+            nameservers:
+              addresses: [${DNS1},${DNS2}]
+    version: 2" | sudo tee /etc/netplan/01-bibbox-network.yaml > /dev/null
 }
 
+## Reset network to use DHCP
 function set_dhcp {
-  sudo cat << DELIM >> interfaces.conf
-#The loopback network interface
-auto lo
-iface lo inet loopback
-
-# The primary network interface
-auto $1
-iface $1 inet dhcp
-DELIM
-
-  sudo mv interfaces.conf /etc/network/interfaces
+  echo "network:
+  ethernets:
+    $1:
+      dhcp4: true
+  version: 2" | sudo tee /etc/netplan/01-bibbox-network.yaml > /dev/null
 }
 
 ###
 # DHCP question.
 ###
-read -p "Do you wish to set dynamic IP (y/n)? " yn
+read -p "Do you wish to set dynamic IP - DHCP (y/n)? " yn
 case $yn in
   [Yy]* )
 		echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
-		echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
+		echo "Ethernet adapters normally starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
 		echo "Select the interface to configure:"
-		INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+		INTERFACES=$(ip -o link show | awk -F': ' '{print $2}' | tail -n +2)
 		INTERFACES+=' Exit'
 		select INTERFACE in ${INTERFACES};
 		do
@@ -86,7 +78,7 @@ case $yn in
 		echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
 		echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
 		echo "Select the interface to configure:"
-		INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+		INTERFACES=$(ip -o link show | awk -F': ' '{print $2}' | tail -n +2)
 		INTERFACES+=' Exit'
 		select INTERFACE in ${INTERFACES};
 		do
@@ -105,29 +97,6 @@ case $yn in
 		;;
 esac
 
-
-###
-# WIFY question.
-###
-echo "${BOLD}${RED}Disable WIFI to lock down.${RESET}"
-echo "Select WIFI interface to disable:"
-INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
-INTERFACES+=' No-wifi'
-select INTERFACE in ${INTERFACES};
-do
-	case ${INTERFACE} in
-		'No-wifi')
-			echo "${UNDERLINE}${RED}You known best!${RESET}"
-			sleep 5s
-			break
-			;;
-		*)
-			sudo sh -c "echo 'iface ${INTERFACE} inet manual' >> /etc/network/interfaces"
-			break
-			;;
-	esac
-done
-
 ## Restart network anwait for it to be stable.
 echo "${GREEN}Resetting network connections...${RESET}"
-sudo service networking restart
+sudo netplan apply
