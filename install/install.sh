@@ -14,7 +14,7 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="v1.8.3"
+VERSION="v2.0.0-beta1"
 URL="https://github.com/bibboxen/bibbox/releases/download/${VERSION}/"
 FILE="${VERSION}.tar.gz"
 
@@ -163,9 +163,6 @@ tar -zxf ${FILE} -C ${DIR}/${VERSION}/ || exit 1
 rm -rf ${URL}${FILE}
 ln -s ${DIR}/${VERSION}/ bibbox
 
-cp ${SELF}/server.key ${DIR}/bibbox/
-cp ${SELF}/server.crt ${DIR}/bibbox/
-
 ## Supervisor config
 sudo cat << DELIM >> ${DIR}/bibbox.conf
 [program:bibbox]
@@ -263,12 +260,13 @@ sudo apt-get install xfonts-75dpi -y || exit 1
 sudo dpkg -i ${SELF}/packages/wkhtmltox_0.14-bibbox.deb || exit 1
 
 ## Send logs into log server
-cat << DELIM >> /etc/rsyslog.d/10-rsyslog.conf
+cat << DELIM >> ${DIR}/10-rsyslog.conf
 *.=err   @@10.215.17.150:28778
 *.=crit  @@10.215.17.150:28778
 *.=alert @@10.215.17.150:28778
 *.=emerg @@10.215.17.150:28778
 DELIM
+sudo mv ${DIR}/10-rsyslog.conf /etc/rsyslog.d/10-rsyslog.conf
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
