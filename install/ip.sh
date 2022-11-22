@@ -6,7 +6,9 @@ RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 RESET=$(tput sgr0)
 
+###
 # Set the IP (if static).
+###
 function set_ip {
  read -p "Enter IP: " IP
  read -p "Subnet Mask (28): " SUBNET
@@ -32,13 +34,22 @@ function set_ip {
     version: 2" | sudo tee /etc/netplan/01-bibbox-network.yaml > /dev/null
 }
 
-## Reset network to use DHCP
+###
+# Reset network to use DHCP
+###
 function set_dhcp {
   echo "network:
   ethernets:
     $1:
       dhcp4: true
   version: 2" | sudo tee /etc/netplan/01-bibbox-network.yaml > /dev/null
+}
+
+###
+# Set hostname
+##
+function set_hostmane {
+	sudo hostnamectl set-hostname $1
 }
 
 ###
@@ -92,6 +103,26 @@ case $yn in
 					;;
 			esac
 		done
+		;;
+  [Nn]* )
+		;;
+esac
+
+###
+# Hostname question.
+###
+read -p "Do you wish to change hostname (y/n)? " yn
+case $yn in
+  [Yy]* )
+		echo "${UNDERLINE}${GREEN}Hostname configuration${RESET}"
+		HOSTNAME=$(sudo hostnamectl status | grep 'Static hostname' | awk -F': ' '{print $2}')
+		read -p "HOSTNAME (${HOSTNAME}): " HOSTNAME
+		set_hostmane ${HOSTNAME}
+
+		sudo sed -i".bak" "/127.0.1.1/d" /etc/hosts
+		echo "127.0.1.1 ${HOSTNAME}" | sudo tee -a /etc/hosts > /dev/null
+
+		echo "${GREEN}Hostname updated, logout and in again to see change...${RESET}"
 		;;
   [Nn]* )
 		;;

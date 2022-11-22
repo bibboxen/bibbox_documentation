@@ -101,7 +101,7 @@ DEBIAN_FRONTEND=noninteractive
 echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf > /dev/null
 sudo apt-get update || exit 1
 sudo apt-get upgrade -y || exit 1
-sudo apt-get install cloud-init libnetplan0 libudev1 netplan.io udev bash-completion nano -y || exit 1
+sudo apt-get install cloud-init libnetplan0 libudev1 netplan.io udev bash-completion nano iputils-ping -y || exit 1
 
 ## Get NodeJS.
 wget -q -O - https://deb.nodesource.com/setup_14.x | sudo bash
