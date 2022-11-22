@@ -63,37 +63,30 @@ Tryk på "__exit__" ikonet og svar "__Yes__" til at gemme ændringeren.
 
 
 ## Kort gennemgang 
-1. Install Ubuntu Server
-2. Vælg sprog __"English"__
-3. Vælg location __"other"__, __"Europe"__ og derefter __"Danmark"__
-4. Vælg locales til __"United Kingdom - en_GB.UTF-8"__
-5. __"No"__ til at automatisk keyboard
-6. Tryk enter til __"Danish"__ og __"Danish"__ som layout
-7. Angiv hostname
-8. Opret bruger konto "__bibbox__" med tilhørende adgangskode og svar __"Yes"__ hvis den spørger efter "Weak password"
-9. __"No"__ til at kryptere hjemmemappen
-10. Vælg tidszone __"Europe/Copenhagen"__
-11. Hvis den spørger til at "umount partitions" svar __"Yes"__
-12. Partition af disken - vælg __"Guided - use entire disk"__
-13. Vælg disk og svar __"Yes"__ til at skrive ændringer til disk
-14. Tryk enter til __"Proxy"__. Derved vælges ingen
-15. Vælg __"No automatic updates"__
-16. Tab til __"Continue"__ med kun "standard system utilities" som valgt software
-17. Install Grub i master boot record, hvis det kommer op vælg så disken __"sda"__
-18. Færdiggør installationen og genstart
-19. Login som __"bibbox"__
-20. Kør "__ifconfig__" og notere MAC adresse
-21. Indsæt USB nøgle med install scripts - __"sudo mount /dev/sdb1 /media/cdrom"__
-22. Kopier scripts og drivers - __"cp -rf /media/cdrom/install /home/bibbox/"__
-23. Umount USB - __"sudo umount /media/cdrom"__
-24. Lav scriptet executable - __"sudo chmod +x /home/bibbox/install/*.sh"__
-25. Kør scriptet - __"cd /home/bibbox/install"__ og __"./install.sh"__
-26. Hvis maskinen ikke er på det rigtig netværk vælg __"n"__ til at sætte static IP
-27. Vælg wireless netkort og slå dette fra. Normalt starter det med __"wlp"__
-28. Hvis den spørger efter password skriv _bibbox_-brugerens adgangskode. Dette kan ske flere gang under installationen,
- hvis denne tager længere tid end normalt.
-29. Hvis den spørger om andet end specificeret i vejledningen ovenfor skal der svares "no" i alle tilfælde.
-
+1. Vælg punktet "__Try or Install Ubuntu Server__"
+2. Vælg sprog "__English__"
+3. Vælg "__Continue without updating__" hvis den spørg efter ny installer
+4. Vælg "__Danish__" tastatur layout
+5. Vælg "__Done__"
+6. Vælg "__Ubuntu Sever (minimized)__" 
+7. Vælg "__Done__" til netværks setup med DHCP
+8. "__Done__" til proxy
+9. "__Done__" til mirror og brug det den har fundet
+10. Vælg "__Done__" til at bruge hele disken
+11. Udfyld bruger profile og maskine navn og vælg "__Done__"
+12. Vælg "__Install OpenSSH server__" og vælg "__Done__"
+13. Vælg "__Done__"
+14. Når installation er færdig vælg "__Reboot now__"
+15. Login som __"bibbox"__
+16. Kør "__ifconfig__" og notere MAC adresse
+17. Indsæt USB nøgle med install scripts - __"sudo mount /dev/sdb1 /media/cdrom"__
+18. Kopier scripts og drivers - __"cp -rf /media/cdrom/install /home/bibbox/"__
+19. Umount USB - __"sudo umount /media/cdrom"__
+20. Lav scriptet executable - __"sudo chmod +x /home/bibbox/install/*.sh"__
+21. Kør scriptet - __"cd /home/bibbox/install"__ og __"./install.sh"__
+22. Hvis maskinen ikke er på det rigtig netværk vælg __"n"__ til at sætte static IP
+23. Vælg wireless netkort og slå dette fra. Normalt starter det med __"wlp"__
+24. Hvis den spørger efter password skriv _bibbox_-brugerens adgangskode. Dette kan ske flere gang under installationen,
 
 __Skift til statisk IP__
 
@@ -115,9 +108,9 @@ __Skift til statisk IP__
 
 #### Step 1
 Efter boot op vil den første skærm vise de installationsmuligheder man har fra USB pen'en. 
-Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbaseret. Men lige meget hvad skal man vælge punktet "__Install Ubuntu Server__".
+Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbaseret. Men lige meget hvad skal man vælge punktet "__Try or Install Ubuntu Server__".
 
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/01.png" alt="Drawing" style="width: 500px; align: center"/>
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/00.png" alt="Drawing" style="width: 500px; align: center"/>
 
 -------------------------
 
@@ -125,192 +118,93 @@ Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbasere
 Vælg sprog "__English__". Man kan også vælge danish, da dette ingen betydning har på det endelige system, der er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
 Resten af denne guide antager at valget er engelsk.
 
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/01.png" alt="Drawing" style="width: 500px;"/>
+
+-------------------------
+
+#### Step 3
+Alt efter hvor ny din Ubuntu 22.04 installations pen er kan dette billlede kommer frem og her vælges bare "__Continue without updating__"
+
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/02.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 3 (Select your location - 1)
-Vælg din location "__Other__" som land.
+#### Step 4 (Layout - 1)
+Vælg layout som passer til dit tastatur "__Danish__"
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/03.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 4 (Select your location - 2)
-Vælg "__Europe__" som region.
+#### Step 5 (Layout - 2)
+Du kan vælge at skift "__Variant__", hvis du har et specielt tastatur eller vælg "__Done__"
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/04.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 5 (Select your location - 3)
-Vælg "__Danmark__" som område.
+#### Step 6 
+Vælg "__Ubuntu Sever (minimized)__" som installations type og vælg "__Done__".
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/05.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 6 (Configure locales)
-Vælg "__United Kingdom - en_GB.UTF-8__" som locale til at basere systemet på.
+#### Step 7 (Automatically detected network)
+Installationen vil nu automatisk finde det tilkoblede netværk (DHCP) og oprette forbindelse til Internettet.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/06.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 7 (Configure the keyboard - 1)
-Her skal man vælge "__No__", da man ellers skal trykke en række specialtaster for automatisk at finde dit keyboard layout, hvilket er langt mere besværligt.
+#### Step 8 (Configure the network - proxy)
+Hvis du ikke er bag proxy vælg "__Done__" eller indsæt http/https proxy url.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/07.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 8 (Configure the keyboard - 2)
-Vælg land "__Danish__", som gerne skulle være valgt på forhånd, ellers find den på listen og tryk enter.
+#### Step 9 (Configure the network - mirror)
+Bliver automatisk detected, så bare vælg "__Done__"
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/08.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 9 (Configure the keyboard - 3)
-Vælg igen "__Danish__" medmindre du vil benytte et ikke standard dansk tastatur.
+#### Step 10 (Partition disks - 1)
+Til partitionering af disken vælg "__Use entire disk__" for at benytte hele disken.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/09.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 10 (Automatically detected network)
-Installationen vil nu automatisk finde det tilkoblede netværk (DHCP) og oprette forbindelse til Internettet.
+#### Step 11 (Profile setup)
+Opret superburger på systemet. Det er ikke krævet, at denne bruger hedder "bibbox", men det er anbefaldet. 
+NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan bruges. Men dette er ikke testet på nuværende tidspunkt.
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/10.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 11 (Configure the network - hostname)
-Angiv systemets netværksnavn.
+#### Step 12 (SSH setup)
+Vælg "__Install OpenSSH server__" for at have mulighed for fjernadministration og opdateringer af maskinne senere hen.
+
+<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/11.png" alt="Drawing" style="width: 500px;"/>
+
+-------------------------
+
+#### Step 13 (Featured Server Snaps)
+Du skal ikke installer nogle extra features, bare vælg "__Done__".
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/12.png" alt="Drawing" style="width: 500px;"/>
 
 -------------------------
 
-#### Step 12 (Set up users and passwords - full name)
-Opret superburger på systemet. Det er ikke krævet, at denne bruger hedder "bibbox", men det er anbefaldet. 
-NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan bruges. Men dette er ikke testet på nuværende tidspunkt.
-
-Angiv navn: __bibbox__
+#### Step 14 (Installation/Install complete!)
+Den vil nu starte installation og når den er færdig kan man vælge "__Reboot Now__"
 
 <img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/13.png" alt="Drawing" style="width: 500px;"/>
 
--------------------------
-
-#### Step 13 (Set up users and passwords - user name)
-Vælg samme navn som i forrige skridt.
-
-Angiv brugernavn: __bibbox__
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/14.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 14 (Set up users and passwords - password)
-Angiv superbrugerens adgangskode - husk at denne skal bruges senere til at sikkerhedsopdatere systemet mm.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/15.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 15 (Set up users and passwords - password verify)
-Angiv adgangskoden igen.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/16.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 16 (Set up users and passwords - weak password)
-Hvis du har valgt en adgangskode som systemet syntes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige "__Yes__" til at acceptere svagt password.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/17.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 17 (Set up users and passwords - encrypt)
-Vælg "__No__" til at kryptere hjemmemappen for brugeren.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/18.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 18 (Configure the Clock)
-Hvis der er forbindelse til Internettet (NTP) vil der være valgt "__Europe/Copenhagen__" som tidszone. Ellers vælg den på listen.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/19.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 19 (Partition disks - 1)
-Hvis den spørger om den skal unmount partitioner så vælg "__Yes__" til at umount dem.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/20.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 20 (Partition disks - 2)
-Til partitionering af disken vælg "__Guided - use entire disk__" for at benytte hele disken.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/21.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 21 (Partition disks - 3)
-Vælge hoveddisk, normalt kaldt "_sda_", hvis der er flere på listen.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/22.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 22 (Partition disks - 4)
-Vælg at skrive ændringer til disken. "__Yes__" for at oprette partitionerne.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/23.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 23 (Configure the package manger)
-Vælg ingen proxy ved at trykke "__enter__".
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/24.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 24 (Configure tasksel)
-Vi ønsker ikke at benytte automatiske opdateringer, da vi gerne vil have kontrol over softwaren på SC systemet for at sikre det er stabilt.
-
-Så vælg "__No automatic updates__".
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/25.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-### Step 25 (Software selection)
-Brug tab til at komme til "__Continue__" så vi kun vælger "__standard system utilities__", som det eneste vi installerer på nuværende tidspunkt.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/26.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 26 (Install the GRUB boot loader on a hard disk)
-For at boote systemet op efter installation skal grub installeres på master boot record. 
-Så vælg "__Yes__" til dette. 
-Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil være - brug disk valgt i step 21, "__sda__" som udgangspunkt.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/27.png" alt="Drawing" style="width: 500px;"/>
-
--------------------------
-
-#### Step 27 (Finish the installation)
-Fjern USB installations-pen'en og vælg "__Continue__" hvilket vil genstarte maskinen. 
-Den vil nu være klar til at køre selv-installationen af BibBox softwaren.
-
-<img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/28.png" alt="Drawing" style="width: 500px;"/>
 
 
 -------------------------
