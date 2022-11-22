@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generated-by" content="Markdown PRO, http://markdownpro.com"/>
+<title></title>
+<style type="text/css">
+html,body{margin:0;padding:0;}
+body {padding: 20px}
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,cite,code,del,dfn,em,img,q,s,samp,small,strike,strong,sub,sup,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,button,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1;font-family:inherit;}
+table{border-collapse:collapse;border-spacing:0;}
+ol,ul{list-style:none;}
+q:before,q:after,blockquote:before,blockquote:after{content:"";}
+html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+a:focus{outline:thin dotted;}
+a:hover,a:active{outline:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{border:0;-ms-interpolation-mode:bicubic;}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+button,input{line-height:normal;*overflow:visible;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;}
+input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+textarea{overflow:auto;vertical-align:top;}
+html,body{background-color:#ffffff;}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;color:#404040;}
+.container{width:940px;margin-left:auto;margin-right:auto;zoom:1;}.container:before,.container:after{display:table;content:"";zoom:1;*display:inline;}
+.container:after{clear:both;}
+.container-fluid{position:relative;min-width:940px;padding-left:20px;padding-right:20px;zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";zoom:1;*display:inline;}
+.container-fluid:after{clear:both;}
+.container-fluid>.sidebar{float:left;width:220px;}
+.container-fluid>.content{margin-left:240px;}
+a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:hover{color:#00438a;text-decoration:underline;}
+.pull-right{float:right;}
+.pull-left{float:left;}
+.hide{display:none;}
+.show{display:block;}
+.row{zoom:1;margin-left:-20px;}.row:before,.row:after{display:table;content:"";zoom:1;*display:inline;}
+.row:after{clear:both;}
+p{font-size:13px;font-weight:normal;line-height:18px;margin-bottom:9px;}p small{font-size:11px;color:#bfbfbf;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
+h1{margin-bottom:18px;font-size:30px;line-height:36px;}h1 small{font-size:18px;}
+h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
+h3,h4,h5,h6{line-height:36px;}
+h3{font-size:18px;}h3 small{font-size:14px;}
+h4{font-size:16px;}h4 small{font-size:12px;}
+h5{font-size:14px;}
+h6{font-size:13px;color:#bfbfbf;text-transform:uppercase;}
+ul,ol{margin:0 0 18px 25px;}
+ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
+ul{list-style:disc;}
+ol{list-style:decimal;}
+li{line-height:18px;color:#808080;}
+ul.unstyled{list-style:none;margin-left:0;}
+dl{margin-bottom:18px;}dl dt,dl dd{line-height:18px;}
+dl dt{font-weight:bold;}
+dl dd{margin-left:9px;}
+hr{margin:20px 0 19px;border:0;border-bottom:1px solid #eee;}
+strong{font-style:inherit;font-weight:bold;}
+em{font-style:italic;font-weight:inherit;line-height:inherit;}
+.muted{color:#bfbfbf;}
+blockquote{margin-bottom:18px;border-left:5px solid #eee;padding-left:15px;}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;}
+blockquote small{display:block;font-size:12px;font-weight:300;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
+address{display:block;line-height:18px;margin-bottom:18px;}
+code,pre{padding:0 3px 2px;font-family:Monaco, Andale Mono, Courier New, monospace;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+code{padding:1px 3px;}
+pre{background-color:#f5f5f5;display:block;padding:8.5px;margin:0 0 18px;line-height:18px;font-size:12px;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre;white-space:pre-wrap;word-wrap:break-word;}
+form{margin-bottom:18px;}
+fieldset{margin-bottom:18px;padding-top:18px;}fieldset legend{display:block;padding-left:150px;font-size:19.5px;line-height:1;color:#404040;*padding:0 0 5px 145px;*line-height:1.5;}
+form .clearfix{margin-bottom:18px;zoom:1;}form .clearfix:before,form .clearfix:after{display:table;content:"";zoom:1;*display:inline;}
+form .clearfix:after{clear:both;}
+label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:normal;}
+label{padding-top:6px;font-size:13px;line-height:18px;float:left;width:130px;text-align:right;color:#404040;}
+form .input{margin-left:150px;}
+input[type=checkbox],input[type=radio]{cursor:pointer;}
+input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;font-size:13px;line-height:18px;color:#808080;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;}
+input[type=file]{background-color:#ffffff;padding:initial;border:initial;line-height:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
+select,input[type=file]{height:27px;line-height:27px;*margin-top:4px;}
+select[multiple]{height:inherit;}
+textarea{height:auto;}
+.uneditable-input{background-color:#ffffff;display:block;border-color:#eee;-webkit-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);-moz-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);cursor:not-allowed;}
+:-moz-placeholder{color:#bfbfbf;}
+::-webkit-input-placeholder{color:#bfbfbf;}
+input,textarea{-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;-ms-transition:border linear 0.2s,box-shadow linear 0.2s;-o-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);}
+input:focus,textarea:focus{outline:0;border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);}
+input[type=file]:focus,input[type=checkbox]:focus,select:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;outline:1px dotted #666;}
+form div.clearfix.error{background:#fae5e3;padding:10px 0;margin:-10px 0 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}form div.clearfix.error>label,form div.clearfix.error span.help-inline,form div.clearfix.error span.help-block{color:#9d261d;}
+form div.clearfix.error input,form div.clearfix.error textarea{border-color:#c87872;-webkit-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);-moz-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);box-shadow:0 0 3px rgba(171, 41, 32, 0.25);}form div.clearfix.error input:focus,form div.clearfix.error textarea:focus{border-color:#b9554d;-webkit-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);-moz-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);box-shadow:0 0 6px rgba(171, 41, 32, 0.5);}
+form div.clearfix.error .input-prepend span.add-on,form div.clearfix.error .input-append span.add-on{background:#f4c8c5;border-color:#c87872;color:#b9554d;}
+table{width:100%;margin-bottom:18px;padding:0;border-collapse:separate;*border-collapse:collapse;font-size:13px;border:1px solid #ddd;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
+table th{padding-top:9px;font-weight:bold;vertical-align:middle;border-bottom:1px solid #ddd;}
+table td{vertical-align:top;}
+table th+th,table td+td{border-left:1px solid #ddd;}
+table tr+tr td{border-top:1px solid #ddd;}
+table tbody tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;-moz-border-radius:4px 0 0 0;border-radius:4px 0 0 0;}
+table tbody tr:first-child td:last-child{-webkit-border-radius:0 4px 0 0;-moz-border-radius:0 4px 0 0;border-radius:0 4px 0 0;}
+table tbody tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;}
+table tbody tr:last-child td:last-child{-webkit-border-radius:0 0 4px 0;-moz-border-radius:0 0 4px 0;border-radius:0 0 4px 0;}
+.zebra-striped tbody tr:nth-child(odd) td{background-color:#f9f9f9;}
+.zebra-striped tbody tr:hover td{background-color:#f5f5f5;}
+.zebra-striped .header{cursor:pointer;}.zebra-striped .header:after{content:"";float:right;margin-top:7px;border-width:0 4px 4px;border-style:solid;border-color:#000 transparent;visibility:hidden;}
+.zebra-striped .header:hover:after{visibility:visible;}
+footer{margin-top:17px;padding-top:17px;border-top:1px solid #eee;}
+.page-header{margin-bottom:17px;border-bottom:1px solid #ddd;-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);-moz-box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);box-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}.page-header h1{margin-bottom:8px;}
+.close{float:right;color:#000000;font-size:20px;font-weight:bold;line-height:13.5px;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-khtml-opacity:0.2;-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-khtml-opacity:0.4;-moz-opacity:0.4;opacity:0.4;}
+
+pre {
+	padding: 0;
+	margin: 10px 0px 10px;
+	overflow: auto; /*--If the Code exceeds the width, a scrolling is available--*/
+	overflow-Y: hidden;  /*--Hides vertical scroll created by IE--*/
+}
+pre code {
+	margin: 5px;  /*--Left Margin--*/
+	padding: 0px;
+	display: block;
+    line-height: 18px;
+}
+.center { text-align:center}
+.left {text-align:left}
+.right {text-align:right}
+
+</style><style type="text/css">
+body{font-size:14px;line-height:1.6;font-family: Helvetica, arial, freesans, clean, sans-serif;padding: 20px;}
+body>*:first-child{margin-top:0!important;}
+body>*:last-child{margin-bottom:0!important;}
+body a:active {outline: none;}
+body a:hover {text-decoration: underline;}
+body a {color: #4183C4;text-decoration: none;}
+body a.absent{color:#c00;}
+body h1, body h2, h3, h4, h5, h6{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased;}
+body h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code{font-size:inherit;}
+body h1{font-size:28px;color:#000;}
+body h2{font-size:24px;border-bottom:1px solid #ccc;color:#000;}
+body h3{font-size:18px;}
+body h4{font-size:16px;}
+body h5{font-size:14px;}
+body h6{color:#777;font-size:14px;}
+body p, blockquote, ul, ol, dl, li, table, pre{margin:15px 0;}
+body hr{background:transparent url('../../images/modules/pulls/dirty-shade.png') repeat-x 0 0;border:0 none;color:#ccc;height:4px;padding:0;}
+body>h2:first-child,>h1:first-child,>h1:first-child+h2,>h3:first-child,>h4:first-child,>h5:first-child,>h6:first-child{margin-top:0;padding-top:0;}
+body h1+p, h2+p, h3+p, h4+p, h5+p, h6+p{margin-top:0;}
+body li p.first{display:inline-block;}
+body ul, ol{padding-left:30px;}
+body ul li>:first-child, ol li>:first-child{margin-top:0;}
+body ul li>:last-child, ol li>:last-child{margin-bottom:0;}
+body dl{padding:0;}
+body dl dt{font-size:14px;font-weight:bold;font-style:italic;padding:0;margin:15px 0 5px;}
+body dl dt:first-child{padding:0;}
+body dl dt>:first-child{margin-top:0;}
+body dl dt>:last-child{margin-bottom:0;}
+body dl dd{margin:0 0 15px;padding:0 15px;}
+body dl dd>:first-child{margin-top:0;}
+body dl dd>:last-child{margin-bottom:0;}
+body blockquote{border-left:4px solid #DDD;padding:0 15px;color:#777;}
+body blockquote>:first-child{margin-top:0;}
+body blockquote>:last-child{margin-bottom:0;}
+body table{padding:0;}
+body table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0;}
+body table tr:nth-child(2n){background-color:#f8f8f8;}
+body table tr th{font-weight:bold;}
+body table tr th, table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px;}
+body table tr th>:first-child, table tr td>:first-child{margin-top:0;}
+body table tr th>:last-child, table tr td>:last-child{margin-bottom:0;}
+body img{max-width:100%;}
+body span.frame{display:block;overflow:hidden;}
+body span.frame>span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto;}
+body span.frame span img{display:block;float:left;}
+body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0;}
+body span.align-center{display:block;overflow:hidden;clear:both;}
+body span.align-center>span{display:block;overflow:hidden;margin:13px auto 0;text-align:center;}
+body span.align-center span img{margin:0 auto;text-align:center;}
+body span.align-right{display:block;overflow:hidden;clear:both;}
+body span.align-right>span{display:block;overflow:hidden;margin:13px 0 0;text-align:right;}
+body span.align-right span img{margin:0;text-align:right;}
+body span.float-left{display:block;margin-right:13px;overflow:hidden;float:left;}
+body span.float-left span{margin:13px 0 0;}
+body span.float-right{display:block;margin-left:13px;overflow:hidden;float:right;}
+body span.float-right>span{display:block;overflow:hidden;margin:13px auto 0;text-align:right;}
+body code, tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px;}
+body pre>code{margin:0;padding:0;white-space:pre;border:none;background:transparent;}
+body .highlight pre, pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px;}
+body pre code, pre tt{background-color:transparent;border:none;}
+</style></head>
+<body>
+<h1 id="toc_0">Installationsguide (dansk)</h1>
+
+<p>Denne guide indeholder en kort og en længere gennemgang af, hvordan man installerer BibBox som et SelfCheck system (SC). 
+Denne løsning benytter <a href="https://www.ubuntu.com/download/server">Ubuntu Server 22.04 LTS</a>. 
+Dette er derfor en gennemgang af installationen af Ubuntu Server og derefter et installations script.</p>
+
+<p>Installationen kræver at man har en internet forbindelse, da det meste at det krævede software automatisk downloads fra Internettet. 
+Installations-scriptet kommer med et ekstra script til at ændre IP til en static adresse.</p>
+
+<p>Guiden antager at man benytter en USB nølge til at foretage installationen og at denne indholder både Ubuntu Server 
+og BibBox installations-script (men det kunne være på forskellige nøgler).</p>
+
+<p><strong>Hint</strong>: Server-installation bruger <em>n-curses</em> UI, hvor man slår ting fra/til med &quot;<strong>space</strong>&quot;, 
+skifter område med &quot;<strong>tabulator</strong>&quot; og bekræfter sine valg med &quot;<strong>enter</strong>&quot;.</p>
+
+<p><strong>Hint</strong>: &quot;<strong>tab</strong>&quot; kan også bruges til at auto-complete kommandoer og stier i filesystemet. 
+To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvis der er mere end en auto-complete mulighed.</p>
+
+<h2 id="toc_1">Preinstall (Intel NUC)</h2>
+
+<p>Hvis du ikke kører system på en Intel NUC maskine vil du kunne hoppe denne del af guiden over.</p>
+
+<h3 id="toc_2">BIOS opdatering</h3>
+
+<p>Det er anbefalet at opdatere BIOS på NUC til den seneste version, hvilket for dette skriv vil sige <a href="https://downloadcenter.intel.com/download/26445/BIOS-Update-PYBSWCEL-86A-">PYBSWCEL.86A - 058</a>. For mere information omkring opdatering læse <a href="http://www.intel.com/content/www/us/en/support/boards-and-kits/000005636.html">Intel&#39;s opdatering guide</a>.</p>
+
+<h3 id="toc_3">BIOS/UEFI konfiguration Intel NUC</h3>
+
+<p>Intel NUC har problemer med at opstarten af Linux kernen med dennes default konfiguration, hvilket fremstår ved at maskine går i stå under opstarts processen. For at komme videre det skal man lave følgende ændring i selve BIOS konfigurationen.</p>
+
+<p><strong>Note</strong>: Husk at sætte maskine til at start automatisk ved &quot;<strong>Power failure</strong>&quot; til &quot;<strong>Power on</strong>&quot;, hvilet osse gøres i BIOS.</p>
+
+<h4 id="toc_4">Step 1 (Home screen)</h4>
+
+<p>Tryk F2 ved <em>&quot;Intel NUC&quot;</em> logo&#39;et under opstart, hvorefter følgende skærmbillede fremkommet. Her skal man vælge &quot;<strong>Advanced</strong>&quot; (fremhævet med rød cirkel) under &quot;<em>Boot Order</em>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios1.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_5">Step 2 (Boot Order)</h4>
+
+<p>Klik på &quot;<strong>Boot Configuration</strong>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios2.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_6">Step 3</h4>
+
+<p>Vælg &quot;<strong>OS Selection</strong>&quot; dropdown boksen og vælg &quot;<em>Linux</em>&quot; i denne.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios3.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_7">Step 4</h4>
+
+<p>Tryk på &quot;<strong>exit</strong>&quot; ikonet og svar &quot;<strong>Yes</strong>&quot; til at gemme ændringeren.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/bios4.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h3 id="toc_8">Boot Linux installation med UEFI</h3>
+
+<ol>
+<li>Tryk F10 ved &quot;<em>Intel NUC</em>&quot; logo&#39;et</li>
+<li>Vælg &quot;<strong>UEFI : USB : SanDisk Cruzer.....</strong>&quot;</li>
+</ol>
+
+<h2 id="toc_9">Kort gennemgang</h2>
+
+<ol>
+<li>Vælg punktet &quot;<strong>Try or Install Ubuntu Server</strong>&quot;</li>
+<li>Vælg sprog &quot;<strong>English</strong>&quot;</li>
+<li>Vælg &quot;<strong>Continue without updating</strong>&quot; hvis den spørg efter ny installer</li>
+<li>Vælg &quot;<strong>Danish</strong>&quot; tastatur layout</li>
+<li>Vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Vælg &quot;<strong>Ubuntu Sever (minimized)</strong>&quot; </li>
+<li>Vælg &quot;<strong>Done</strong>&quot; til netværks setup med DHCP</li>
+<li>&quot;<strong>Done</strong>&quot; til proxy</li>
+<li>&quot;<strong>Done</strong>&quot; til mirror og brug det den har fundet</li>
+<li>Vælg &quot;<strong>Done</strong>&quot; til at bruge hele disken</li>
+<li>Udfyld bruger profile og maskine navn og vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Vælg &quot;<strong>Install OpenSSH server</strong>&quot; og vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Når installation er færdig vælg &quot;<strong>Reboot now</strong>&quot;</li>
+<li>Login som <strong>&quot;bibbox&quot;</strong></li>
+<li>Kør &quot;<strong>ifconfig</strong>&quot; og notere MAC adresse</li>
+<li>Indsæt USB nøgle med install scripts - <strong>&quot;sudo mount /dev/sdb1 /media/cdrom&quot;</strong></li>
+<li>Kopier scripts og drivers - <strong>&quot;cp -rf /media/cdrom/install /home/bibbox/&quot;</strong></li>
+<li>Umount USB - <strong>&quot;sudo umount /media/cdrom&quot;</strong></li>
+<li>Lav scriptet executable - <strong>&quot;sudo chmod +x /home/bibbox/install/*.sh&quot;</strong></li>
+<li>Kør scriptet - <strong>&quot;cd /home/bibbox/install&quot;</strong> og <strong>&quot;./install.sh&quot;</strong></li>
+<li>Hvis maskinen ikke er på det rigtig netværk vælg <strong>&quot;n&quot;</strong> til at sætte static IP</li>
+<li>Vælg wireless netkort og slå dette fra. Normalt starter det med <strong>&quot;wlp&quot;</strong></li>
+<li>Hvis den spørger efter password skriv <em>bibbox</em>-brugerens adgangskode. Dette kan ske flere gang under installationen,</li>
+</ol>
+
+<p><strong>Skift til statisk IP</strong></p>
+
+<ol>
+<li>Ctrl <strong>&quot;w&quot;</strong> for at lukke Chrome (som vil starte igen med det samme)</li>
+<li>Inden Chrome når at starte <strong>&quot;Højre klik&quot;</strong></li>
+<li>Vælg &quot;Terminal&quot;</li>
+<li>Gå ind i install <strong>&quot;cd /home/bibbox/install&quot;</strong></li>
+<li>Køre <strong>&quot;./ip.sh&quot;</strong></li>
+<li>Vælg ethernet kort, normalt <em>&quot;enp&quot;</em> (på Intel nuc &quot;enp3s0&quot;)</li>
+<li>Angiv netværksadresser</li>
+<li>Vælg wireless kort, normalt starter det med <em>&quot;wlp&quot;</em></li>
+<li>Reboot ved at skrive <strong>&quot;reboot&quot;</strong> og tryk enter</li>
+</ol>
+
+<h2 id="toc_10">Detaljeret gennemgang</h2>
+
+<h4 id="toc_11">Step 1</h4>
+
+<p>Efter boot op vil den første skærm vise de installationsmuligheder man har fra USB pen&#39;en. 
+Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbaseret. Men lige meget hvad skal man vælge punktet &quot;<strong>Try or Install Ubuntu Server</strong>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/00.png" alt="Drawing" style="width: 500px; align: center"/></p>
+
+<hr/>
+
+<h4 id="toc_12">Step 2 (Select a language)</h4>
+
+<p>Vælg sprog &quot;<strong>English</strong>&quot;. Man kan også vælge danish, da dette ingen betydning har på det endelige system, der er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
+Resten af denne guide antager at valget er engelsk.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/01.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_13">Step 3</h4>
+
+<p>Alt efter hvor ny din Ubuntu 22.04 installations pen er kan dette billlede kommer frem og her vælges bare &quot;<strong>Continue without updating</strong>&quot;</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/02.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_14">Step 4 (Layout - 1)</h4>
+
+<p>Vælg layout som passer til dit tastatur &quot;<strong>Danish</strong>&quot;</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/03.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_15">Step 5 (Layout - 2)</h4>
+
+<p>Du kan vælge at skift &quot;<strong>Variant</strong>&quot;, hvis du har et specielt tastatur eller vælg &quot;<strong>Done</strong>&quot;</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/04.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_16">Step 6</h4>
+
+<p>Vælg &quot;<strong>Ubuntu Sever (minimized)</strong>&quot; som installations type og vælg &quot;<strong>Done</strong>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/05.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_17">Step 7 (Automatically detected network)</h4>
+
+<p>Installationen vil nu automatisk finde det tilkoblede netværk (DHCP) og oprette forbindelse til Internettet.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/06.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_18">Step 8 (Configure the network - proxy)</h4>
+
+<p>Hvis du ikke er bag proxy vælg &quot;<strong>Done</strong>&quot; eller indsæt http/https proxy url.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/07.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_19">Step 9 (Configure the network - mirror)</h4>
+
+<p>Bliver automatisk detected, så bare vælg &quot;<strong>Done</strong>&quot;</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/08.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_20">Step 10 (Partition disks - 1)</h4>
+
+<p>Til partitionering af disken vælg &quot;<strong>Use entire disk</strong>&quot; for at benytte hele disken.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/09.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_21">Step 11 (Profile setup)</h4>
+
+<p>Opret superburger på systemet. Det er ikke krævet, at denne bruger hedder &quot;bibbox&quot;, men det er anbefaldet. 
+NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan bruges. Men dette er ikke testet på nuværende tidspunkt.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/10.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_22">Step 12 (SSH setup)</h4>
+
+<p>Vælg &quot;<strong>Install OpenSSH server</strong>&quot; for at have mulighed for fjernadministration og opdateringer af maskinne senere hen.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/11.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_23">Step 13 (Featured Server Snaps)</h4>
+
+<p>Du skal ikke installer nogle extra features, bare vælg &quot;<strong>Done</strong>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/12.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_24">Step 14 (Installation/Install complete!)</h4>
+
+<p>Den vil nu starte installation og når den er færdig kan man vælge &quot;<strong>Reboot Now</strong>&quot;</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/13.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h2 id="toc_25">Kørsel af BibBox <em>install.sh</em> script</h2>
+
+<h4 id="toc_26">Step 1</h4>
+
+<p>Log ind som brugeren &quot;<strong>bibbox</strong>&quot; på systemet.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_01.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_27">Step 2</h4>
+
+<p>Hvis MAC adressen skal benytte til netværks opsætning f.eks. ISE. Så fåes denne ved at køre &quot;<strong>ifconfig</strong>&quot; (se skræmbilledet herunder hvor MAC adressen har en rød streg under)</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_001.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_28">Step 3</h4>
+
+<p>Indsæt USB nøglen med BibBox installations scriptet og mount denne ind i &quot;<strong>/media/cdrom</strong>&quot;. 
+USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis der er flere USB nøgler komme som næste bogstav &quot;<em>sdc1</em>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_02.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_29">Step 4</h4>
+
+<p>Kopier installationsfolderen med script og drivers ind i hjemmemappen for &quot;<em>bibbox</em>&quot;-brugeren.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_03.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_30">Step 5</h4>
+
+<p>Kør installationsscriptet ved at gå ind i mappen install. </p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_04.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_31">Step 6</h4>
+
+<p>Eksekver filen &quot;<em>install.sh</em>&quot; for at påbegynde installations processen af BibBox SC software.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_05.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_32">Step 7</h4>
+
+<p>Første skridt i installations scriptet er om du vil benytte en statisk IP adresse eller forsætte med en dynamisk IP. 
+Vi antager her at vi fortsætter med en dynamisk IP (statisk IP kan sættes senere) og vælger derefter at slå WIFI fra på maskinen (normalt start den med &quot;<em>wlp</em>&quot;).</p>
+
+<p><strong>Bemærk</strong>: grunden til at man slår WIFI fra, er at det under nogle installationer har automatisk forbundet 
+til åbne netværk og det derved har forstyret hentningen af filer under installationen (med forventning om login på netværk).</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_06.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_33">Step 8</h4>
+
+<p>Herefter starter installationen med at hente filer og lave de forskellige opsætninger. 
+Dette vil tage en del tid alt efter hastigheden på nettet. 
+Under installationen kan der blive spurgt efter &quot;<em>bibbox</em>&quot; brugerens adgangskode, hvilket man så bare skal indtaste. </p>
+
+<p><strong>Bemærk</strong>: hvis skærmen bliver sort/blank under installation er dette en screensaver, 
+som kan fjernes ved at trykke f.eks. pil ned (da denne tast på ingen måde kan forstyre installationen bagved).</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_07.png" alt="Drawing" style="width: 500px;"/></p>
+
+<p>Når installationen er gennemført vil maskinen genstarte og starte Google Chrome i kiosk mode i en minimal grafisk desktop. 
+Selve konfigurationen af brugergrænsefladen sker via det administrative system (web-grænseflade) på BibBox Admin Serveren, 
+som så kan uploade konfigurationen til SC maskinen.</p>
+
+<hr/>
+
+<h1 id="toc_34">Static IP</h1>
+
+<p>Efter installationen kan man åbne en ny terminal og skifte til en statisk IP med scriptet &quot;<em>ip.sh</em>&quot; i &quot;<em>install</em>&quot; mappen.</p>
+
+<h4 id="toc_35">Step 1</h4>
+
+<p>For at få adgang til en terminal skal man trykke &quot;<strong>ctrl+w</strong>&quot; og hurtigt klikke på højre mus tast på den lyse grå baggrund 
+før Google Chrome når at genstarte. Man vil så få en menu (som vist på billedet), hvis man ikke klikker andre steder 
+vil denne være der efter Chrome er kommet frem igen.</p>
+
+<p>Vælge &quot;<strong>Terminal emulator</strong>&quot; for at start terminalen.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_00.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_36">Step 2</h4>
+
+<p>Den opstartede terminal med Google Chrome i baggrunden.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_08.png?1" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_37">Step 3</h4>
+
+<p>Gå ind i &quot;<em>install</em>&quot; folderen og kør kommandoen &quot;<strong>./ip.sh</strong>&quot; for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skifte til DHCP, ved at svare &quot;<strong>y</strong>&quot; til første spørgsmål. Men her antager vi at man svarer &quot;<strong>n</strong>&quot; og &quot;<strong>y</strong>&quot; til næste spørgsmål om at sætte en statisk IP.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_09.png?1" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_38">Step 4</h4>
+
+<p>Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være &quot;<em>enp3s0</em>&quot;. Billedet herunder passer ikke med en Intel nuc, men en virtual maskine).</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_10.png?1" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_39">Step 5</h4>
+
+<p>Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på &quot;<strong>enter</strong>&quot; uden at angive noget for det enkelte valg. Herefter skal man angive &quot;<em>bibbox</em>&quot; brugerens adgangskode for at foretage ændringeren.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_11.png?1" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_40">Step 6</h4>
+
+<p>Slå WIFI fra ved at vælge det wireless netkort (starter normalt med &quot;<em>wlp</em>&quot;).</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_12.png?1" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_41">Step 7</h4>
+
+<p>Genstart maskinen for at sikre at ændringen slår igennem. Dette gøres ved at skrive &quot;<strong>reboot</strong>&quot; og trykke &quot;<strong>enter</strong>&quot;.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/install_13.png" alt="Drawing" style="width: 500px;"/></p>
+
+<p>Når maskinen er startet op med Google Chrome er maskine færdig konfigureret og klar til at modtage yderligere konfiguration fra den administrative server.</p>
+
+</body>
+</html>

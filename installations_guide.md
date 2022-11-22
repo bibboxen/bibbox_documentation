@@ -1,6 +1,6 @@
 # Installationsguide (dansk)
 Denne guide indeholder en kort og en længere gennemgang af, hvordan man installerer BibBox som et SelfCheck system (SC). 
-Denne løsning benytter [Ubuntu Server 16.04 LTS](https://www.ubuntu.com/download/server). 
+Denne løsning benytter [Ubuntu Server 22.04 LTS](https://www.ubuntu.com/download/server). 
 Dette er derfor en gennemgang af installationen af Ubuntu Server og derefter et installations script.
 
 Installationen kræver at man har en internet forbindelse, da det meste at det krævede software automatisk downloads fra Internettet. 
