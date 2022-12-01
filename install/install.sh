@@ -96,6 +96,11 @@ done
 echo "${GREEN}Resetting network connections...${RESET}"
 sudo netplan apply
 
+## Switch to using resolve.conf from the applied netplan.
+sudo unlink /etc/resolv.conf
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+sudo systemctl restart systemd-resolved.service
+
 ## Ensure system is up-to-date.
 DEBIAN_FRONTEND=noninteractive
 echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf > /dev/null
