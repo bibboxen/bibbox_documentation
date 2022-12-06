@@ -260,10 +260,6 @@ sudo apt-get install ntp ntpstat -y || exit 1
 sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
 sudo systemctl enable ntp
 
-## Install wkhtmltopdf
-sudo apt-get install xfonts-75dpi -y || exit 1
-sudo dpkg -i ${SELF}/packages/wkhtmltox_0.14-bibbox.deb || exit 1
-
 ## Send logs into log server
 cat << DELIM >> ${DIR}/10-rsyslog.conf
 *.=err   @@10.215.17.150:28778
