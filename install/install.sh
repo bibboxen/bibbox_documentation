@@ -108,6 +108,10 @@ sudo apt-get update || exit 1
 sudo apt-get upgrade -y || exit 1
 sudo apt-get install cloud-init libnetplan0 libudev1 netplan.io udev bash-completion nano iputils-ping -y || exit 1
 
+## Set timezone to "Europe/Copenhagen"
+ln -fs /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
+dpkg-reconfigure -f noninteractive tzdata
+
 ## Get NodeJS.
 wget -q -O - https://deb.nodesource.com/setup_14.x | sudo bash
 sudo apt-get install nodejs -y || exit 1
