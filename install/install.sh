@@ -203,8 +203,10 @@ sudo lpadmin -p bon -E -v usb://EPSON/TM-m30 -P /usr/share/ppd/Epson/tm-ba-therm
 sudo lpadmin -d bon
 
 # Lock down queue to max one job.
+sudo sh -c "echo '' >> /etc/cups/cupsd.conf"
 sudo sh -c "echo 'MaxJobTime 30' >> /etc/cups/cupsd.conf"
 sudo sh -c "echo 'MaxJobs 1' >> /etc/cups/cupsd.conf"
+sudo sh -c "sed -i 's/ErrorPolicy .*/ErrorPolicy abort-job/' /etc/cups/cupsd.conf"
 
 # Restart cups
 sudo service cups restart
