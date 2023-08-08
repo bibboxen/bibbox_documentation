@@ -112,7 +112,7 @@ sudo apt-get install cloud-init libnetplan0 libudev1 netplan.io udev bash-comple
 sudo timedatectl set-timezone Europe/Copenhagen
 
 ## Get NodeJS.
-wget -q -O - https://deb.nodesource.com/setup_14.x | sudo bash
+wget -q -O - https://deb.nodesource.com/setup_18.x | sudo bash
 sudo apt-get install nodejs -y || exit 1
 
 ## Install tools.
